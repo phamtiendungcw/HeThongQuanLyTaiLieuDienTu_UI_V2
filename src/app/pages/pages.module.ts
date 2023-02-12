@@ -1,13 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+/*
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
 
-import { PagesRoutingModule } from './pages-routing.module';
-import { PageLoginComponent } from './page-login/page-login.component';
-import { PageRegisterComponent } from './page-register/page-register.component';
-import { PageProfileComponent } from './page-profile/page-profile.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutsModule } from '../layouts/layouts.module';
 import { PageError404Component } from './errors/page-error404/page-error404.component';
 import { PageError500Component } from './errors/page-error500/page-error500.component';
-
+import { PageLoginComponent } from './page-login/page-login.component';
+import { PageProfileComponent } from './page-profile/page-profile.component';
+import { PageRegisterComponent } from './page-register/page-register.component';
+import { PagesRoutingModule } from './pages-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +20,14 @@ import { PageError500Component } from './errors/page-error500/page-error500.comp
     PageRegisterComponent,
     PageProfileComponent,
     PageError404Component,
-    PageError500Component
+    PageError500Component,
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
-  ]
+    PagesRoutingModule,
+    FormsModule,
+    LayoutsModule,
+    ReactiveFormsModule,
+  ],
 })
-export class PagesModule { }
+export class PagesModule {}

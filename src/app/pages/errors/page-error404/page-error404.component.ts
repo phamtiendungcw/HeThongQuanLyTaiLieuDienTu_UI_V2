@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
