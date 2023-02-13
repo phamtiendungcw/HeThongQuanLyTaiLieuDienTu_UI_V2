@@ -5,6 +5,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
 import { AccountService } from './service/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +15,11 @@ import { AccountService } from './service/account.service';
 export class AppComponent implements OnInit {
   title = 'Hệ thống quản lý tài liệu ện tử UI';
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
     this.setCurrentUser();
+    this.checkUserLocal();
   }
 
   setCurrentUser() {
@@ -25,5 +27,12 @@ export class AppComponent implements OnInit {
     if (!userString) return;
     const user: User = JSON.parse(userString);
     this.accountService.setCurrentUser(user);
+  }
+
+  private checkUserLocal() {
+    const userLocal = this.accountService.getUserLocal();
+    if (userLocal != null) {
+      this.router.navigate(['/admin/home']);
+    }
   }
 }

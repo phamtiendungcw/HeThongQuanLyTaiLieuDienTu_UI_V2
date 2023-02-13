@@ -6,7 +6,7 @@
   <ul class="sidebar-nav" id="sidebar-nav">
     <ng-container>
       <li class="nav-item">
-        <a class="nav-link " routerLink="/admin/home" routerLinkActive="active">
+        <a class="nav-link " routerLink="/admin/home">
           <i class="bi bi-grid"></i>
           <span>Tổng quan</span>
         </a>
@@ -16,20 +16,21 @@
           <i class="bi bi-menu-button-wide"></i><span>Tài liệu điện tử</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li><a [routerLink]="['document']"> <i class="bi bi-circle"></i><span>Tài liệu đến</span> </a></li>
+          <li><a [routerLink]="['document']" routerLinkActive="active">
+            <i class="bi bi-circle"></i><span>Tài liệu đến</span> </a></li>
           <li><a> <i class="bi bi-circle"></i><span>Tài liệu gửi đi</span> </a></li>
           <li><a> <i class="bi bi-circle"></i><span>Tài liệu nội bộ</span> </a></li>
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" [routerLink]="['members']">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" [routerLink]="['members']" routerLinkActive="active">
           <i class="bi bi-person-vcard"></i>
           <span>Quản lý tài khoản nhân viên</span>
         </a>
       </li>
       <li class="nav-heading">Truy cập trang</li>
       <li class="nav-item">
-        <a class="nav-link collapsed" [routerLink]="['/account/login']">
+        <a class="nav-link collapsed" [routerLink]="['login']">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Đăng nhập</span>
         </a>
@@ -41,19 +42,19 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="/account/register">
+        <a class="nav-link collapsed" routerLink="register">
           <i class="bi bi-card-list"></i>
           <span>Đăng ký tài khoản</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="/not-found">
+        <a class="nav-link collapsed" routerLink="not-found">
           <i class="bi bi-dash-circle"></i>
           <span>Error 404</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="/server-error">
+        <a class="nav-link collapsed" routerLink="server-error">
           <i class="bi bi-bug"></i>
           <span>Server Error 500</span>
         </a>

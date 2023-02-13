@@ -26,7 +26,6 @@ export class PageLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
-    this.checkUserLocal();
     this.getUsers();
   }
 
@@ -81,12 +80,5 @@ export class PageLoginComponent implements OnInit {
 
   registerEventClicked() {
     this.router.navigate(['account/register']);
-  }
-
-  private checkUserLocal() {
-    const userLocal = this.accountService.getUserLocal();
-    if (userLocal != null) {
-      this.router.navigate(['/admin/home']);
-    }
   }
 }

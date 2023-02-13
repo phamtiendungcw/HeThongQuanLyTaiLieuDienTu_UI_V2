@@ -133,6 +133,20 @@
   }
 }
 
+.nav-link {
+  &:hover, &:active {
+    color: #717ff5;
+    background-color: #f6f9ff;
+    border-left: 3px solid #717ff5;
+  }
+}
+
+.active {
+  color: #717ff5;
+  background-color: #f6f9ff;
+  border-left: 3px solid #717ff5;
+}
+
 
 @media (max-width: 1199px) {
   .sidebar {

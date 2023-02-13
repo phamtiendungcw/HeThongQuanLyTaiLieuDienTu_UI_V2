@@ -14,6 +14,10 @@ import { MemberListComponent } from './member/member-list/member-list.component'
 import { DocumentDetailComponent } from './document/document-detail/document-detail.component';
 import { DocumentEditComponent } from './document/document-edit/document-edit.component';
 import { DocumentCreateComponent } from './document/document-create/document-create.component';
+import { PageError404Component } from '../../pages/errors/page-error404/page-error404.component';
+import { PageLoginComponent } from '../../pages/page-login/page-login.component';
+import { PageRegisterComponent } from '../../pages/page-register/page-register.component';
+import { PageError500Component } from '../../pages/errors/page-error500/page-error500.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -41,6 +45,10 @@ const routes: Routes = [
           { path: 'create', component: DocumentCreateComponent },
         ],
       },
+      { path: 'not-found', component: PageError404Component },
+      { path: 'server-error', component: PageError500Component },
+      { path: 'login', component: PageLoginComponent },
+      { path: 'register', component: PageRegisterComponent },
     ],
   },
 ];
