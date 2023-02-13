@@ -12,6 +12,8 @@ import { AccountService } from './service/account.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  title = 'Hệ thống quản lý tài liệu ện tử UI';
+
   constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {

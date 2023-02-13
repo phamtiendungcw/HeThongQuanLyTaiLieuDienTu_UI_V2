@@ -48,6 +48,7 @@ import { LayoutsModule } from '../../layouts/layouts.module';
   imports: [
     CommonModule,
     AdminRoutingModule,
+    FormsModule,
     LayoutsModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -63,7 +64,6 @@ import { LayoutsModule } from '../../layouts/layouts.module';
     ReactiveFormsModule,
     MatSortModule,
     MatSelectModule,
-    FormsModule,
     MatInputModule,
     MatDialogModule,
   ],
