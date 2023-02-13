@@ -7,6 +7,10 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from '../../layouts/header/header.component';
+import { SidebarComponent } from '../../layouts/sidebar/sidebar.component';
+import { FooterComponent } from '../../layouts/footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MemberCreateComponent } from './member/member-create/member-create.component';
 import { MemberDetailComponent } from './member/member-detail/member-detail.component';
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
@@ -26,16 +30,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
-import { LayoutsModule } from '../../layouts/layouts.module';
 
 @NgModule({
   declarations: [
     HomeComponent,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent,
     MemberCreateComponent,
     MemberDetailComponent,
     MemberEditComponent,
@@ -49,7 +54,6 @@ import { LayoutsModule } from '../../layouts/layouts.module';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    LayoutsModule,
     MatToolbarModule,
     MatSidenavModule,
     MatButtonToggleModule,
