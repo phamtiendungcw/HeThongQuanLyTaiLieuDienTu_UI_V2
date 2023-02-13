@@ -1,17 +1,21 @@
-/*!
+/*
  * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
  */
 
+@charset "UTF-8";
+/*!
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
 table {
   width: 100%;
 }
 
 .member-list {
   background: #ffffff;
+}
 
-  mat-form-field {
-    width: 100%;
-  }
+.member-list mat-form-field {
+  width: 100%;
 }
 
 .modal-backdrop {
@@ -34,3 +38,5 @@ table {
   flex: auto;
   background-color: #fff;
 }
+
+/*# sourceMappingURL=member-list.component.css.map */

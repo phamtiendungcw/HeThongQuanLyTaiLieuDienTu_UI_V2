@@ -19,10 +19,12 @@
   padding: 60px 60px 60px 60px;
   border-radius: 20px;
 }
+
 .form-signIn .form-floating input {
   font-size: 18px;
   font-weight: 400;
 }
+
 .form-signIn .form-floating:focus-within {
   z-index: 2;
 }

@@ -6,13 +6,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutsModule } from '../layouts/layouts.module';
 import { PageError404Component } from './errors/page-error404/page-error404.component';
 import { PageError500Component } from './errors/page-error500/page-error500.component';
 import { PageLoginComponent } from './page-login/page-login.component';
 import { PageProfileComponent } from './page-profile/page-profile.component';
 import { PageRegisterComponent } from './page-register/page-register.component';
 import { PagesRoutingModule } from './pages-routing.module';
+import { ThemeModule } from '../layouts/theme/theme.module';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,8 @@ import { PagesRoutingModule } from './pages-routing.module';
     CommonModule,
     PagesRoutingModule,
     FormsModule,
-    LayoutsModule,
     ReactiveFormsModule,
+    ThemeModule,
   ],
 })
 export class PagesModule {}

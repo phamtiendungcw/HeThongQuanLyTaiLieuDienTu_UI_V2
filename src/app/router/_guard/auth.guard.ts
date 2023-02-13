@@ -17,6 +17,7 @@ export class AuthGuard implements CanActivate {
     private toastr: ToastrService,
     private router: Router
   ) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

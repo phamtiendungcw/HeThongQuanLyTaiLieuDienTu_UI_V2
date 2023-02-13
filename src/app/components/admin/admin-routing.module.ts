@@ -23,14 +23,24 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: HomeComponent,
     children: [
-      { path: 'members', component: MemberListComponent },
-      { path: 'members/:username/view', component: MemberDetailComponent },
-      { path: 'members/:username/edit', component: MemberEditComponent },
-      { path: 'members/create', component: MemberCreateComponent },
-      { path: 'document', component: DocumentListComponent },
-      { path: 'document/:id/view', component: DocumentDetailComponent },
-      { path: 'document/:id/edit', component: DocumentEditComponent },
-      { path: 'document/create', component: DocumentCreateComponent },
+      {
+        path: 'members',
+        component: MemberListComponent,
+        children: [
+          { path: ':username/view', component: MemberDetailComponent },
+          { path: ':username/edit', component: MemberEditComponent },
+          { path: 'create', component: MemberCreateComponent },
+        ],
+      },
+      {
+        path: 'document',
+        component: DocumentListComponent,
+        children: [
+          { path: ':id/view', component: DocumentDetailComponent },
+          { path: ':id/edit', component: DocumentEditComponent },
+          { path: 'create', component: DocumentCreateComponent },
+        ],
+      },
     ],
   },
 ];

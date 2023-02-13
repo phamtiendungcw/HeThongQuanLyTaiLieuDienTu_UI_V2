@@ -1,9 +1,12 @@
-/*!
+/*
  * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
  */
 
+@charset "UTF-8";
+/*!
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
 /* You can add global styles to this file, and also import other style files */
-
 :root {
   scroll-behavior: smooth;
 }
@@ -23,9 +26,11 @@ a {
   cursor: pointer;
   color: #4154f1;
   text-decoration: none;
-
-  &:hover {
-    color: #717ff5;
-    text-decoration: none;
-  }
 }
+
+a:hover {
+  color: #717ff5;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=styles.css.map */
