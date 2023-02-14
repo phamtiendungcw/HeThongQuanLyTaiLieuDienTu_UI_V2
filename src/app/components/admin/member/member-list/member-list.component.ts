@@ -20,6 +20,13 @@ import { MemberCreateComponent } from '../member-create/member-create.component'
 })
 export class MemberListComponent implements OnInit {
   // members: Member[] = [];
+  crumbs = [
+    {
+      crumb: 'Nhân viên',
+      router: '/admin/home/members',
+    },
+  ];
+
   displayedColumns: string[] = [
     'id',
     'email',
@@ -60,8 +67,10 @@ export class MemberListComponent implements OnInit {
   deleteMember(userName: string) {
     this.memberService.deleteMember(userName).subscribe({
       next: () => this.toastr.success('Xoá nhân viên thành công'),
-      error: (err) =>
-        this.toastr.error('Đã có lỗi xảy ra khi thực hiện thao tác xoá'),
+      error: (err) => {
+        this.toastr.error('Đã có lỗi xảy ra khi thực hiện thao tác xoá');
+        console.log(err);
+      },
     });
   }
 

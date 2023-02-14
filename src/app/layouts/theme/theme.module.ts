@@ -10,6 +10,8 @@ import { TextInputComponent } from './text-input/text-input.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from "@angular/material/input";
+import { MatListModule } from "@angular/material/list";
 
 @NgModule({
   declarations: [TextInputComponent, BreadcrumbComponent],
@@ -18,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ThemeRoutingModule,
     MatIconModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatListModule,
   ],
   exports: [TextInputComponent, BreadcrumbComponent],
 })

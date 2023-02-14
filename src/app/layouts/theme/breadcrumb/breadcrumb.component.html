@@ -2,16 +2,18 @@
   ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
   -->
 
-<div class="flex items-center">
+<div class="d-flex align-items-center">
   <div class="breadcrumb">
-    <a [routerLink]="['/']">
-      <mat-icon svgIcon="mat:home" class="icon-sm"></mat-icon>
+    <a class="d-flex align-items-center" [routerLink]="['/admin/home']">
+      <mat-icon class="fs-5">home</mat-icon>
+      <mat-label>Trang chủ</mat-label>
     </a>
   </div>
-  <ng-container *ngFor="let crumb of crumbs; trackBy: trackByValue">
-    <div class="w-1 h-1 bg-gray rounded-full ltr:mr-2 rtl:ml-2"></div>
-    <div class="breadcrumb">
-      <a [routerLink]="[]">{{ crumb }}</a>
-    </div>
+  <ng-container *ngFor="let crumb of crumbs;">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="[crumb.router]" routerLinkActive="active">&nbsp;/&nbsp;{{ crumb.crumb }}</a>
+      </li>
+    </ol>
   </ng-container>
 </div>

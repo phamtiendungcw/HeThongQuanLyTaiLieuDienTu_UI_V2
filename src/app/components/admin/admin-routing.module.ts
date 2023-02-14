@@ -37,7 +37,7 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'document',
+        path: 'documents',
         component: DocumentListComponent,
         children: [
           { path: ':id/view', component: DocumentDetailComponent },
