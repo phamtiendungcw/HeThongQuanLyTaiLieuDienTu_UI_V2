@@ -10,6 +10,9 @@ import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Member } from '../../../../models/member';
+import { MemberDetailComponent } from '../member-detail/member-detail.component';
+import { MemberEditComponent } from '../member-edit/member-edit.component';
+import { MemberCreateComponent } from '../member-create/member-create.component';
 
 @Component({
   selector: 'app-member-list',
@@ -71,5 +74,17 @@ export class MemberListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openDetailForm(element: any) {
+    this.dialog.open(MemberDetailComponent);
+  }
+
+  openEditForm(element: any) {
+    this.dialog.open(MemberEditComponent);
+  }
+
+  openAddForm() {
+    this.dialog.open(MemberCreateComponent);
   }
 }

@@ -11,6 +11,7 @@
           <span>Tổng quan</span>
         </a>
       </li>
+      <li class="nav-heading">Chức năng</li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Tài liệu điện tử</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -30,31 +31,31 @@
       </li>
       <li class="nav-heading">Truy cập trang</li>
       <li class="nav-item">
-        <a class="nav-link collapsed" [routerLink]="['login']">
+        <a class="nav-link collapsed" [routerLink]="['login']" routerLinkActive="active">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Đăng nhập</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" [routerLink]="['/account/profile']">
+        <a class="nav-link collapsed" [routerLink]="['/account/profile']" routerLinkActive="active">
           <i class="bi bi-person"></i>
           <span>Thông tin cá nhân</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="register">
+        <a class="nav-link collapsed" routerLink="register" routerLinkActive="active">
           <i class="bi bi-card-list"></i>
           <span>Đăng ký tài khoản</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="not-found">
+        <a class="nav-link collapsed" routerLink="not-found" routerLinkActive="active">
           <i class="bi bi-dash-circle"></i>
           <span>Error 404</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="server-error">
+        <a class="nav-link collapsed" routerLink="server-error" routerLinkActive="active">
           <i class="bi bi-bug"></i>
           <span>Server Error 500</span>
         </a>

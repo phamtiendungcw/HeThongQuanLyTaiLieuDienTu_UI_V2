@@ -15,9 +15,9 @@
 <div class="d-flex mb-2 justify-content-between align-items-center">
   <div class="search rounded-5 border px-4 align-items-center">
     <mat-icon class="text-secondary">search</mat-icon>
-    <input class="px-4 py-2 border-0 w-auto bg-transparent" matInput (keyup)="applyFilter($event)" placeholder="Tìm kiếm..." type="search">
+    <input class="px-2 py-2 border-0 w-auto bg-transparent" matInput (keyup)="applyFilter($event)" placeholder="Tìm kiếm..." type="search">
   </div>
-  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal" [routerLink]="['create']">
+  <button class="btn btn-success" (click)="openAddForm()" data-bs-toggle="modal" data-bs-target="#addModal" [routerLink]="['create']">
     <i class="bi bi-plus"></i>&nbsp;Thêm mới
   </button>
 </div>
@@ -68,10 +68,10 @@
       <ng-container matColumnDef="hanhDong">
         <th class="text-center" mat-header-cell *matHeaderCellDef> Hành động</th>
         <td class="btn-action" mat-cell *matCellDef="let element">
-          <button class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#detailModal" [routerLink]="[element.userName, 'view']">
+          <button class="btn btn-secondary me-2" (click)="openDetailForm(element)" data-bs-toggle="modal" data-bs-target="#detailModal" [routerLink]="[element.userName, 'view']">
             <i class="bi bi-file-earmark-person"></i>&nbsp;Chi tiết
           </button>
-          <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#editModal" [routerLink]="[element.userName, 'edit']">
+          <button class="btn btn-primary me-2" (click)="openEditForm(element)" data-bs-toggle="modal" data-bs-target="#editModal" [routerLink]="[element.userName, 'edit']">
             <i class="bi bi-pencil-square"></i>&nbsp;Chỉnh sửa
           </button>
           <button class="btn btn-danger" (click)="deleteMember(element.userName)">
@@ -81,65 +81,9 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row (click)="clickedRows.add(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
     <mat-paginator class="mt-2 mb-2" showFirstLastButtons [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Chọn trang"></mat-paginator>
-  </div>
-</div>
-
-<!-- Modal Add New -->
-<div class="modal fade " data-bs-backdrop="false" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true" style="position: absolute; z-index: unset">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="addModalLabel">Thêm mới nhân viên</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <app-member-create></app-member-create>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary">Thêm mới</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Add New -->
-<div class="modal fade " data-bs-backdrop="false" id="detailModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true" style="position: absolute; z-index: unset">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="detailModalLabel">Thông tin nhân viên</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <app-member-detail></app-member-detail>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Add New -->
-<div class="modal fade " data-bs-backdrop="false" id="editModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true" style="position: absolute; z-index: unset">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="editModalLabel">Chỉnh sửa thông tin nhân viên</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <app-member-edit></app-member-edit>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary">Lưu</button>
-      </div>
-    </div>
   </div>
 </div>

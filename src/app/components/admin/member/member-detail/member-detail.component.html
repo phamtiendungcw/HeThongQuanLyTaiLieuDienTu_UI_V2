@@ -1,1 +1,14 @@
-<p>member-detail works!</p>
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+
+<h1 mat-dialog-title>Hi {{member.hoVaTen}}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Họ và tên</mat-label>
+    <input matInput [(ngModel)]="member.hoVaTen">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false" (click)="close()">Đóng</button>
+</div>

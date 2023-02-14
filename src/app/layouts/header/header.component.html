@@ -2,7 +2,7 @@
   ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
   -->
 
-<header id="header" class="header fixed-top d-flex align-items-center" *ngIf="(accountService.currentUser$) as user">
+<header id="header" class="header fixed-top d-flex align-items-center" *ngIf="(accountService.currentUser$ | async) as user">
   <div class="d-flex align-items-center justify-content-between">
     <a routerLink="/admin/home" class="logo d-flex align-items-center">
       <img src="assets/images/logo.png" alt="Logo">
@@ -25,19 +25,19 @@
       </li>
       <li class="nav-item dropdown pe-3">
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="assets/images/user.png" alt="Profile" class="rounded-circle">
-          <span class="d-none d-md-block dropdown-toggle ps-2">Phạm Tiến Dũng</span>
+          <img src="{{user.photoUrl || './assets/images/user.png'}}" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2">{{user.hovaten}}</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
-            <h6 class="d-flex justify-content-center">Phạm Tiến Dũng</h6>
-            <span class="d-flex justify-content-center">@phamtiendung_admin</span>
+            <h6 class="d-flex justify-content-center">{{user.hovaten}}</h6>
+            <span class="d-flex justify-content-center">@{{user.username}}</span>
           </li>
           <li>
             <hr class="dropdown-divider">
           </li>
           <li>
-            <a class="dropdown-item d-flex align-items-center" routerLink="/account/profile/">
+            <a class="dropdown-item d-flex align-items-center" [routerLink]="['/account/profile/', user.username]">
               <i class="bi bi-person"></i>
               <span>Thông tin cá nhân</span>
             </a>
