@@ -75,9 +75,9 @@ export class MemberCreateComponent implements OnInit {
           }
           this.createForm.reset();
           this.dialogRef.close(true);
-          this.router.navigate(['/admin/home/members']).then();
         },
-        error: (err) => this.toastr.error('Đã có lỗi xảy ra' + err),
+        error: (err) =>
+          this.toastr.error('Không thể thêm dữ liệu' + err, 'Đã có lỗi xảy ra'),
       });
     }
   }

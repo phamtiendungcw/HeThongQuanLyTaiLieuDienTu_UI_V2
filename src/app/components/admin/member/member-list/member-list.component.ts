@@ -6,7 +6,6 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MemberService } from '../../../../service/member.service';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MemberDetailComponent } from '../member-detail/member-detail.component';
@@ -43,8 +42,7 @@ export class MemberListComponent implements OnInit {
 
   constructor(
     private memberService: MemberService,
-    private dialog: MatDialog,
-    private toastr: ToastrService
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -63,14 +61,16 @@ export class MemberListComponent implements OnInit {
   }
 
   deleteMember(userName: string) {
-    this.dialog.open(DeleteFormComponent);
-    this.memberService.deleteMember(userName).subscribe({
-      next: () => this.toastr.success('Xoá nhân viên thành công'),
-      error: (err) => {
-        this.toastr.error('Đã có lỗi xảy ra khi thực hiện thao tác xoá');
-        console.log(err);
-      },
-    });
+    this.dialog
+      .open(DeleteFormComponent, {
+        data: userName,
+      })
+      .afterClosed()
+      .subscribe((value) => {
+        if (value) {
+          this.getMembers();
+        }
+      });
   }
 
   applyFilter(event: Event) {

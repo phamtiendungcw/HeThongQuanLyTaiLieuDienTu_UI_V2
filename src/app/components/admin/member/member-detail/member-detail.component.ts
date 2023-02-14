@@ -33,6 +33,5 @@ export class MemberDetailComponent implements OnInit {
 
   close() {
     this.dialogRef.close(true);
-    this.router.navigate(['/admin/home/members']).then();
   }
 }

@@ -12,7 +12,7 @@
     <mat-icon class="text-secondary">search</mat-icon>
     <input class="px-2 py-2 border-0 w-auto bg-transparent" matInput (keyup)="applyFilter($event)" placeholder="Tìm kiếm..." type="search">
   </div>
-  <button class="btn btn-success" (click)="openAddForm()" [routerLink]="['create']">
+  <button (click)="openAddForm()" class="btn btn-success">
     <i class="bi bi-plus"></i>&nbsp;Thêm mới
   </button>
 </div>
@@ -62,10 +62,10 @@
       <ng-container matColumnDef="hanhDong">
         <th class="text-center" mat-header-cell *matHeaderCellDef> Hành động</th>
         <td class="btn-action" mat-cell *matCellDef="let element">
-          <button class="btn btn-secondary me-2" (click)="openDetailForm(element)" [routerLink]="[element.userName, 'view']">
+          <button (click)="openDetailForm(element)" class="btn btn-secondary me-2">
             <i class="bi bi-file-earmark-person"></i>&nbsp;Chi tiết
           </button>
-          <button class="btn btn-primary me-2" (click)="openEditForm(element)" [routerLink]="[element.userName, 'edit']">
+          <button (click)="openEditForm(element)" class="btn btn-primary me-2">
             <i class="bi bi-pencil-square"></i>&nbsp;Chỉnh sửa
           </button>
           <button class="btn btn-danger" (click)="deleteMember(element.userName)">
@@ -75,8 +75,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row (click)="openDetailForm(row)" [routerLink]="[row.userName, 'view']"
-          *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr (click)="openDetailForm(row)" *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
     </table>
 
     <mat-paginator class="mt-2 mb-2" showFirstLastButtons [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Chọn trang"></mat-paginator>

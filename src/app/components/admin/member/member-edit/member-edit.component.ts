@@ -88,12 +88,9 @@ export class MemberEditComponent implements OnInit {
         }
         this.editForm.reset();
         this.dialogRef.close('update');
-        this.router.navigate(['/admin/home/members']).then();
       },
-      error: (err) => {
-        console.log(err);
-        this.toastr.error('Cập nhật không thành công!', 'Đã xảy ra sự cố');
-      },
+      error: () =>
+        this.toastr.error('Cập nhật không thành công!', 'Đã xảy ra sự cố'),
     });
   }
 }
