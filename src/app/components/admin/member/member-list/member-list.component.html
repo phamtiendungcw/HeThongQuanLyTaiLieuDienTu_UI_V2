@@ -12,7 +12,7 @@
     <mat-icon class="text-secondary">search</mat-icon>
     <input class="px-2 py-2 border-0 w-auto bg-transparent" matInput (keyup)="applyFilter($event)" placeholder="Tìm kiếm..." type="search">
   </div>
-  <button class="btn btn-success" (click)="openAddForm()" data-bs-toggle="modal" data-bs-target="#addModal" [routerLink]="['create']">
+  <button class="btn btn-success" (click)="openAddForm()" [routerLink]="['create']">
     <i class="bi bi-plus"></i>&nbsp;Thêm mới
   </button>
 </div>
@@ -62,14 +62,10 @@
       <ng-container matColumnDef="hanhDong">
         <th class="text-center" mat-header-cell *matHeaderCellDef> Hành động</th>
         <td class="btn-action" mat-cell *matCellDef="let element">
-          <button class="btn btn-secondary me-2" (click)="openDetailForm(element)"
-                  data-bs-toggle="modal" data-bs-target="#detailModal"
-                  [routerLink]="[element.userName, 'view']">
+          <button class="btn btn-secondary me-2" (click)="openDetailForm(element)" [routerLink]="[element.userName, 'view']">
             <i class="bi bi-file-earmark-person"></i>&nbsp;Chi tiết
           </button>
-          <button class="btn btn-primary me-2" (click)="openEditForm(element)"
-                  data-bs-toggle="modal" data-bs-target="#editModal"
-                  [routerLink]="[element.userName, 'edit']">
+          <button class="btn btn-primary me-2" (click)="openEditForm(element)" [routerLink]="[element.userName, 'edit']">
             <i class="bi bi-pencil-square"></i>&nbsp;Chỉnh sửa
           </button>
           <button class="btn btn-danger" (click)="deleteMember(element.userName)">
@@ -79,7 +75,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row (click)="openDetailForm(row)" data-bs-toggle="modal" data-bs-target="#detailModal" [routerLink]="[row.userName, 'view']"
+      <tr mat-row (click)="openDetailForm(row)" [routerLink]="[row.userName, 'view']"
           *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 

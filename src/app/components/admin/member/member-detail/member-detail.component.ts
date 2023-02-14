@@ -3,9 +3,9 @@
  */
 
 import { Component, Inject, OnInit } from '@angular/core';
-import { Member } from '../../../../models/member';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Member } from '../../../../models/member';
 
 @Component({
   selector: 'app-member-detail',
@@ -13,13 +13,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./member-detail.component.scss'],
 })
 export class MemberDetailComponent implements OnInit {
-  @Inject(MAT_DIALOG_DATA) public member!: Member;
+  member!: Member;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private dialogRef: MatDialogRef<MemberDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) public detailData: any
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.member = this.detailData;
+  }
 
   close() {
+    this.dialogRef.close('detail');
     this.router.navigate(['/admin/home/members']);
   }
 }

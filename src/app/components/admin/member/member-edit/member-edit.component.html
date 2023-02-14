@@ -1,1 +1,62 @@
-<p>member-edit works!</p>
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+
+<h1 class="text-center" mat-dialog-title>Chỉnh sửa thông tin nhân viên</h1>
+<div class="edit d-flex justify-content-center align-items-center">
+  <div mat-dialog-content>
+    <form [formGroup]="editForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Họ và tên:</mat-label>
+        <input formControlName="hoVaTen" matInput placeholder="Nhập họ và tên">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Giới tính:</mat-label>
+        <mat-select formControlName="gioiTinh" placeholder="Giới tính">
+          <mat-option value="true">Nam</mat-option>
+          <mat-option value="false">Nữ</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ngày sinh:</mat-label>
+        <input formControlName="ngayThangNamSinh" matInput [matDatepicker]="pickerNgaySinh">
+        <mat-datepicker-toggle matSuffix [for]="pickerNgaySinh"></mat-datepicker-toggle>
+        <mat-datepicker #pickerNgaySinh></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Tài khoản:</mat-label>
+        <input formControlName="userName" matInput placeholder="Nhập tài khoản" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email:</mat-label>
+        <input formControlName="email" matInput placeholder="Nhập email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Số điện thoại:</mat-label>
+        <input formControlName="phone" matInput placeholder="Nhập số điện thoại">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Số CMND:</mat-label>
+        <input formControlName="soCMND" matInput placeholder="Nhập số chứng minh nhân dân">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ngày cấp CMND:</mat-label>
+        <input formControlName="ngayCapCMND" matInput [matDatepicker]="pickerNgayCapCMND">
+        <mat-datepicker-toggle matSuffix [for]="pickerNgayCapCMND"></mat-datepicker-toggle>
+        <mat-datepicker #pickerNgayCapCMND></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Nơi cấp CMND:</mat-label>
+        <input formControlName="noiCapCMND" matInput placeholder="Nhập nơi cấp chứng minh nhân dân">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Địa chỉ:</mat-label>
+        <input formControlName="diaChi" matInput placeholder="Nhập địa chỉ">
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button color="warn" mat-button mat-dialog-close="false" [routerLink]="['/admin/home/members']">Hủy bỏ</button>
+  <button class="btn btn-primary" [disabled]="!editForm.dirty" mat-raised-button mat-button [mat-dialog-close]="true" (click)="updateMember()">Cập nhật</button>
+</mat-dialog-actions>

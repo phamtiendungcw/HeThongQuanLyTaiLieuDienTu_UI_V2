@@ -1,14 +1,47 @@
 <!--
   ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
   -->
-
-<h1 mat-dialog-title>Hi {{member.hoVaTen}}</h1>
-<div mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Họ và tên</mat-label>
-    <input matInput [(ngModel)]="member.hoVaTen">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="false" (click)="close()">Đóng</button>
+<div class="detailForm">
+  <h1 class="text-center" mat-dialog-title>Thông tin của {{member.hoVaTen}}</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="standard">
+      <mat-label>Họ và tên</mat-label>
+      <input matInput [(ngModel)]="member.hoVaTen" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Tài khoản</mat-label>
+      <input matInput [(ngModel)]="member.userName" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Địa chỉ email</mat-label>
+      <input matInput [(ngModel)]="member.email" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Ngày tháng năm sinh</mat-label>
+      <input matInput [(ngModel)]="member.ngayThangNamSinh" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Số chứng minh nhân dân</mat-label>
+      <input matInput [(ngModel)]="member.soCMND" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Nơi cấp chứng minh nhân dân</mat-label>
+      <input matInput [(ngModel)]="member.noiCapCMND" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Ngày cấp chứng minh nhân dân</mat-label>
+      <input matInput [(ngModel)]="member.ngayCapCMND" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Giới tính</mat-label>
+      <input matInput [(ngModel)]="member.gioiTinh" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Địa chỉ</mat-label>
+      <input matInput [(ngModel)]="member.diaChi" readonly>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="d-flex justify-content-end">
+    <button mat-button [mat-dialog-close]="false" (click)="close()">Đóng</button>
+  </div>
 </div>

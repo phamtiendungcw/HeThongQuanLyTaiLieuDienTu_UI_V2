@@ -2,10 +2,10 @@
  * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
  */
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MemberService } from '../../../../service/member.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -20,14 +20,12 @@ import { DeleteFormComponent } from '../../../../layouts/theme/delete-form/delet
   styleUrls: ['./member-list.component.scss'],
 })
 export class MemberListComponent implements OnInit {
-  // members: Member[] = [];
   crumbs = [
     {
       crumb: 'Nhân viên',
       router: '/admin/home/members',
     },
   ];
-
   displayedColumns: string[] = [
     'id',
     'email',
@@ -39,7 +37,7 @@ export class MemberListComponent implements OnInit {
     'hanhDong',
   ];
   dataSource!: MatTableDataSource<any>;
-
+  @Inject(MAT_DIALOG_DATA) public editData: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -56,7 +54,6 @@ export class MemberListComponent implements OnInit {
   getMembers() {
     this.memberService.getMembers().subscribe({
       next: (response) => {
-        // this.members = response;
         this.dataSource = new MatTableDataSource(response);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -86,14 +83,36 @@ export class MemberListComponent implements OnInit {
   }
 
   openDetailForm(element: any) {
-    this.dialog.open(MemberDetailComponent);
+    this.dialog.open(MemberDetailComponent, {
+      maxWidth: '500px',
+      data: element,
+    });
   }
 
   openEditForm(element: any) {
-    this.dialog.open(MemberEditComponent);
+    this.dialog
+      .open(MemberEditComponent, {
+        maxWidth: '500px',
+        data: element,
+      })
+      .afterClosed()
+      .subscribe((value) => {
+        if (value === 'update') {
+          this.getMembers();
+        }
+      });
   }
 
   openAddForm() {
-    this.dialog.open(MemberCreateComponent);
+    this.dialog
+      .open(MemberCreateComponent, {
+        maxWidth: '500px',
+      })
+      .afterClosed()
+      .subscribe((value) => {
+        if (value === 'add') {
+          this.getMembers();
+        }
+      });
   }
 }

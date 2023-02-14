@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 3000,
       preventDuplicates: true,
       progressBar: true,
       progressAnimation: 'increasing',

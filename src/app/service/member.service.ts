@@ -17,6 +17,10 @@ export class MemberService {
 
   constructor(private http: HttpClient) {}
 
+  addMembers(member: Member) {
+    return this.http.post<Member>(this.baseUrl + 'account/register', member);
+  }
+
   getMembers() {
     return this.http.get<Member[]>(this.baseUrl + 'user');
   }
