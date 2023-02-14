@@ -34,6 +34,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatInputModule,
     MatDialogModule,
+    MatCardModule,
   ],
 })
 export class AdminModule {}

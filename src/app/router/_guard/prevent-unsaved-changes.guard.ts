@@ -21,11 +21,11 @@ export class PreventUnsavedChangesGuard implements CanDeactivate<unknown> {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // if (component.editForm?.dirty) {
-    //   return confirm(
-    //     'Bạn có chắc chắn muốn thoát khỏi trang này? Mọi thay đổi chưa được lưu sẽ bị mất'
-    //   );
-    // }
-    return true;
-  }
+      if (component.editForm?.dirty) {
+        return confirm(
+          'Bạn có chắc chắn muốn thoát khỏi trang này? Mọi thay đổi chưa được lưu sẽ bị mất'
+        );
+      }
+      return true;
+    }
 }
