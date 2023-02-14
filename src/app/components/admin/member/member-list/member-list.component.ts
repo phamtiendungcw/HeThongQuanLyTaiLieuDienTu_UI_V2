@@ -83,10 +83,17 @@ export class MemberListComponent implements OnInit {
   }
 
   openDetailForm(element: any) {
-    this.dialog.open(MemberDetailComponent, {
-      maxWidth: '500px',
-      data: element,
-    });
+    this.dialog
+      .open(MemberDetailComponent, {
+        maxWidth: '500px',
+        data: element,
+      })
+      .afterClosed()
+      .subscribe((value) => {
+        if (value) {
+          this.getMembers();
+        }
+      });
   }
 
   openEditForm(element: any) {
@@ -97,7 +104,7 @@ export class MemberListComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((value) => {
-        if (value === 'update') {
+        if (value) {
           this.getMembers();
         }
       });
@@ -110,7 +117,7 @@ export class MemberListComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((value) => {
-        if (value === 'add') {
+        if (value) {
           this.getMembers();
         }
       });

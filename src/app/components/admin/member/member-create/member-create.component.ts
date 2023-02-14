@@ -18,6 +18,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class MemberCreateComponent implements OnInit {
   createForm!: FormGroup;
   validationErrors: string[] = [];
+  startDate = new Date(1990, 1, 1);
 
   constructor(
     private accountService: AccountService,
@@ -37,6 +38,7 @@ export class MemberCreateComponent implements OnInit {
       username: ['', [Validators.required, Validators.maxLength(50)]],
       email: ['', Validators.email],
       gioiTinh: ['', Validators.required],
+      ngayThangNamSinh: [''],
       hoVaTen: [
         '',
         [
@@ -58,12 +60,22 @@ export class MemberCreateComponent implements OnInit {
 
   addMember() {
     if (this.createForm.valid) {
+      if (this.createForm.controls['gioiTinh'].value === 'true') {
+        this.createForm.controls['gioiTinh'].setValue(true);
+      } else {
+        this.createForm.controls['gioiTinh'].setValue(false);
+      }
       this.memberService.addMembers(this.createForm.value).subscribe({
-        next: (res) => {
+        next: () => {
           this.toastr.success('Thêm mới nhân viên thành công');
-          this.router.navigate(['/admin/home/members']);
+          if (this.createForm.controls['gioiTinh'].value === true) {
+            this.createForm.controls['gioiTinh'].setValue('true');
+          } else {
+            this.createForm.controls['gioiTinh'].setValue('false');
+          }
           this.createForm.reset();
-          this.dialogRef.close('add');
+          this.dialogRef.close(true);
+          this.router.navigate(['/admin/home/members']).then();
         },
         error: (err) => this.toastr.error('Đã có lỗi xảy ra' + err),
       });

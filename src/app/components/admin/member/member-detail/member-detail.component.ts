@@ -14,6 +14,7 @@ import { Member } from '../../../../models/member';
 })
 export class MemberDetailComponent implements OnInit {
   member!: Member;
+  gioiTinh!: string;
 
   constructor(
     private router: Router,
@@ -23,10 +24,15 @@ export class MemberDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.member = this.detailData;
+    if (this.member.gioiTinh) {
+      this.gioiTinh = 'Nam';
+    } else {
+      this.gioiTinh = 'Nữ';
+    }
   }
 
   close() {
-    this.dialogRef.close('detail');
-    this.router.navigate(['/admin/home/members']);
+    this.dialogRef.close(true);
+    this.router.navigate(['/admin/home/members']).then();
   }
 }

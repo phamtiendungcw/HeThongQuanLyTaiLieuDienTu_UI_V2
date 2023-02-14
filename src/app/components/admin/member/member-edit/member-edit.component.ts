@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MemberService } from '../../../../service/member.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-member-edit',
@@ -20,6 +21,7 @@ export class MemberEditComponent implements OnInit {
     private memberService: MemberService,
     private fb: FormBuilder,
     private toastr: ToastrService,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private dialogRef: MatDialogRef<MemberEditComponent>
   ) {}
@@ -61,7 +63,7 @@ export class MemberEditComponent implements OnInit {
       email: ['', Validators.email],
       gioiTinh: ['', Validators.required],
       ngayThangNamSinh: ['', Validators.required],
-      userName: ['', Validators.required],
+      userName: [''],
       phone: ['', Validators.required],
       soCMND: ['', Validators.required],
       ngayCapCMND: ['', Validators.required],
@@ -71,7 +73,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   updateMember() {
-    if ('true') {
+    if (this.editForm.controls['gioiTinh'].value === 'true') {
       this.editForm.controls['gioiTinh'].setValue(true);
     } else {
       this.editForm.controls['gioiTinh'].setValue(false);
@@ -79,11 +81,18 @@ export class MemberEditComponent implements OnInit {
     this.memberService.updateMember(this.editForm.value).subscribe({
       next: () => {
         this.toastr.success('Cập nhật thành công');
+        if (this.editForm.controls['gioiTinh'].value === true) {
+          this.editForm.controls['gioiTinh'].setValue('true');
+        } else {
+          this.editForm.controls['gioiTinh'].setValue('false');
+        }
         this.editForm.reset();
         this.dialogRef.close('update');
+        this.router.navigate(['/admin/home/members']).then();
       },
       error: (err) => {
-        this.toastr.error('Cập nhật không thành công! Lỗi:' + err);
+        console.log(err);
+        this.toastr.error('Cập nhật không thành công!', 'Đã xảy ra sự cố');
       },
     });
   }
