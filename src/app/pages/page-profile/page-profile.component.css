@@ -10,15 +10,24 @@ a {
   text-decoration: none;
 }
 
-.container .title {
+.container-profile {
+  background-color: whitesmoke;
+  height: 90px;
+}
+
+.container {
+  background-color: #fff;
+}
+
+.title {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .img-profile {
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
 }
 
 .img-edit {

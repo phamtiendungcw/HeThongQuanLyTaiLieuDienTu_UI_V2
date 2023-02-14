@@ -2,230 +2,236 @@
   ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
   -->
 
-<div class="container mt-5">
-  <h1 class="title fw-bold text-uppercase">Thông tin cá nhân</h1>
-  <div class="col-12">
-    <div class="alert alert-info" *ngIf="editForm.dirty">
-      <p><strong>Thông tin: </strong>Bạn đã thực hiện các thay đổi. Mọi thay đổi chưa được lưu sẽ bị mất.</p>
+<div class="container-profile vh-100 d-flex align-items-center">
+  <div class="container card p-5 mat-elevation-z1">
+    <h1 class="title fw-bold text-uppercase">Thông tin cá nhân</h1>
+    <div class="col-12">
+      <div class="alert alert-info" *ngIf="editForm.dirty">
+        <p><strong>Thông tin: </strong>Bạn đã thực hiện các thay đổi. Mọi thay đổi chưa được lưu sẽ bị mất.</p>
+      </div>
     </div>
-  </div>
-  <section class="section profile">
-    <div class="row">
-      <div class="col-xl-4">
-        <div class="card">
-          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            <img src="{{member.photoUrl || './assets/images/user.png'}}" alt="Profile" class="rounded-circle mb-3 img-profile">
-            <h2 class="fs-2 fw-bold">{{member.hoVaTen | titlecase}}</h2>
-            <h3 class="fw-light fs-5">@{{member.userName}}</h3>
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+              <img src="{{member.photoUrl || './assets/images/user.png'}}" alt="Profile" class="rounded-circle mb-3 img-profile">
+              <h2 class="fs-2 fw-bold">{{member.hoVaTen | titlecase}}</h2>
+              <h3 class="fw-light fs-5">@{{member.userName}}</h3>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-xl-8">
-        <div class="card">
-          <div class="card-body pt-3">
-            <!--Title Tab-->
-            <ul class="nav nav-tabs nav-tabs-bordered">
-              <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Tổng quan</button>
-              </li>
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh sửa hồ sơ</button>
-              </li>
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Cài đặt</button>
-              </li>
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Đổi mật khẩu</button>
-              </li>
-            </ul>
-            <div class="tab-content pt-2">
-              <!--Start tab thông tin tài khoản-->
-              <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                <h5 class="card-title fw-bold">Chi tiết hồ sơ</h5>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label ">Họ và tên:</div>
-                  <div class="col-lg-9 col-md-8">{{member.hoVaTen}}</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Giới tính:</div>
-                  <div class="col-lg-9 col-md-8" *ngIf="member.gioiTinh">Nam</div>
-                  <div class="col-lg-9 col-md-8" *ngIf="!member.gioiTinh">Nữ</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Tuổi:</div>
-                  <div class="col-lg-9 col-md-8">{{member.tuoi}}</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Ngày sinh:</div>
-                  <div class="col-lg-9 col-md-8">{{member.ngayThangNamSinh | date:'dd/MM/yyyy'}}</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Số diện thoại:</div>
-                  <div class="col-lg-9 col-md-8">{{member.phone}}</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Số CMND:</div>
-                  <div class="col-lg-9 col-md-8">{{member.soCMND}}</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Ngày cấp CMND:</div>
-                  <div class="col-lg-9 col-md-8">{{member.ngayCapCMND | date:'dd/MM/yyyy'}}</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Nơi cấp CMND:</div>
-                  <div class="col-lg-9 col-md-8">{{member.noiCapCMND}}</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Địa chỉ:</div>
-                  <div class="col-lg-9 col-md-8">{{member.diaChi}}</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8">
-                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e982c788878d8c9b9a8687a98c91888499858cc78a8684">{{member.email}}</a>
+        <div class="col-xl-8">
+          <div class="card">
+            <div class="card-body pt-3">
+              <!--Title Tab-->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Tổng quan</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh sửa hồ sơ</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Cài đặt</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Đổi mật khẩu</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2">
+                <!--Start tab thông tin tài khoản-->
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <h5 class="card-title fw-bold">Chi tiết hồ sơ</h5>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Họ và tên:</div>
+                    <div class="col-lg-9 col-md-8">{{member.hoVaTen}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Giới tính:</div>
+                    <div class="col-lg-9 col-md-8" *ngIf="member.gioiTinh">Nam</div>
+                    <div class="col-lg-9 col-md-8" *ngIf="!member.gioiTinh">Nữ</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Tuổi:</div>
+                    <div class="col-lg-9 col-md-8">{{member.tuoi}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Ngày sinh:</div>
+                    <div class="col-lg-9 col-md-8">{{member.ngayThangNamSinh | date:'dd/MM/yyyy'}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Số diện thoại:</div>
+                    <div class="col-lg-9 col-md-8">{{member.phone}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Số CMND:</div>
+                    <div class="col-lg-9 col-md-8">{{member.soCMND}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Ngày cấp CMND:</div>
+                    <div class="col-lg-9 col-md-8">{{member.ngayCapCMND | date:'dd/MM/yyyy'}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Nơi cấp CMND:</div>
+                    <div class="col-lg-9 col-md-8">{{member.noiCapCMND}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Địa chỉ:</div>
+                    <div class="col-lg-9 col-md-8">{{member.diaChi}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Email</div>
+                    <div class="col-lg-9 col-md-8">
+                      <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e982c788878d8c9b9a8687a98c91888499858cc78a8684">{{member.email}}</a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Ngày truy cập gần nhất:</div>
+                    <div class="col-lg-9 col-md-8">{{member.ngayTruyCap | date:'dd/MM/yyyy'}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Ngày tạo tài khoản:</div>
+                    <div class="col-lg-9 col-md-8">{{member.ngayKhoiTao | date:'dd/MM/yyyy'}}</div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Ngày truy cập gần nhất:</div>
-                  <div class="col-lg-9 col-md-8">{{member.ngayTruyCap | date:'dd/MM/yyyy'}}</div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Ngày tạo tài khoản:</div>
-                  <div class="col-lg-9 col-md-8">{{member.ngayKhoiTao | date:'dd/MM/yyyy'}}</div>
-                </div>
-              </div>
-              <!--End tab thông tin tài khoản-->
+                <!--End tab thông tin tài khoản-->
 
-              <!--Start tab chỉnh sửa thông tin tài khoản-->
-              <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
-                  <div class="row mb-3">
-                    <label class="col-md-4 col-lg-3 col-form-label">Hình ảnh hồ sơ cá nhân</label>
-                    <div class="col-md-8 col-lg-9">
-                      <img class="img-edit" src="{{member.photoUrl || './assets/images/user.png'}}" alt="Profile">
-                      <div class="pt-2">
-                        <a href="#" class="btn btn-primary btn-sm me-1" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                        <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                <!--Start tab chỉnh sửa thông tin tài khoản-->
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                  <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
+                    <div class="row mb-3">
+                      <label class="col-md-4 col-lg-3 col-form-label">Hình ảnh hồ sơ cá nhân</label>
+                      <div class="col-md-8 col-lg-9">
+                        <img class="img-edit" src="{{member.photoUrl || './assets/images/user.png'}}" alt="Profile">
+                        <div class="pt-2">
+                          <a href="#" class="btn btn-primary btn-sm me-1" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Họ và tên</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="fullName" [(ngModel)]="member.hoVaTen" type="text" class="form-control" id="fullName">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="NamSinh" class="col-md-4 col-lg-3 col-form-label">Ngày sinh</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="namsinh" [(ngModel)]="member.ngayThangNamSinh" type="text" class="form-control" id="NamSinh">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="address" class="col-md-4 col-lg-3 col-form-label">Địa chỉ:</label>
-                    <div class="col-md-8 col-lg-9">
-                      <textarea name="address" [(ngModel)]="member.diaChi" class="form-control" id="address" style="height: 100px"></textarea>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="email" [(ngModel)]="member.email" type="text" class="form-control" id="email"></div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="GioiTinh" class="col-md-4 col-lg-3 col-form-label">Giới tính:</label>
-                    <div class="col-md-4 col-lg-9">
-                      <input [(ngModel)]="member.gioiTinh" class="me-1" type="radio" id="GioiTinh">
-                      <span class="me-2">Nam</span>
-                      <input [(ngModel)]="member.gioiTinh" class="me-1" type="radio">
-                      <span>Nữ</span>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="SoCMND" class="col-md-4 col-lg-3 col-form-label">Số CMND</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="socmnd" [(ngModel)]="member.soCMND" type="text" class="form-control" id="SoCMND">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="NgayCapCMND" class="col-md-4 col-lg-3 col-form-label">Ngày cấp CMND</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="ngaycapcmnd" [(ngModel)]="member.ngayCapCMND" type="text" class="form-control" id="NgayCapCMND">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="NoiCapCMND" class="col-md-4 col-lg-3 col-form-label">Nơi cấp CMND</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="noicapcmnd" [(ngModel)]="member.noiCapCMND" type="text" class="form-control" id="NoiCapCMND">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Điện thoại</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="phone" [(ngModel)]="member.phone" type="text" class="form-control" id="Phone">
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <button form="editForm" type="submit" [disabled]="!editForm.dirty" class="btn btn-primary">Lưu thay đổi</button>
-                  </div>
-                </form>
-              </div>
-              <!--End tab chỉnh sửa thông tin tài khoản-->
-
-              <!--Start tab cài đặt thông báo-->
-              <div class="tab-pane fade pt-3" id="profile-settings">
-                <form>
-                  <div class="row mb-3">
-                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Thông báo thư điện tử</label>
-                    <div class="col-md-8 col-lg-9">
-                      <div class="form-check"><input class="form-check-input" type="checkbox" id="changesMade" checked>
-                        <label class="form-check-label" for="changesMade"> Những thay đổi được thực hiện cho tài khoản của bạn </label>
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Họ và tên</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="fullName" [(ngModel)]="member.hoVaTen" type="text" class="form-control" id="fullName">
                       </div>
-                      <div class="form-check"><input class="form-check-input" type="checkbox" id="newProducts" checked>
-                        <label class="form-check-label" for="newProducts"> Thông tin về sản phẩm và dịch vụ mới </label>
-                      </div>
-                      <div class="form-check"><input class="form-check-input" type="checkbox" id="proOffers">
-                        <label class="form-check-label" for="proOffers"> Tiếp thị và cung cấp khuyến mãi </label></div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
-                        <label class="form-check-label" for="securityNotify"> Cảnh báo bảo mật </label></div>
                     </div>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
-                  </div>
-                </form>
-              </div>
-              <!--End tab cài đặt thông báo-->
+                    <div class="row mb-3">
+                      <label for="NamSinh" class="col-md-4 col-lg-3 col-form-label">Ngày sinh</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="namsinh" [(ngModel)]="member.ngayThangNamSinh" type="text" class="form-control" id="NamSinh">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="address" class="col-md-4 col-lg-3 col-form-label">Địa chỉ:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <textarea name="address" [(ngModel)]="member.diaChi" class="form-control" id="address" style="height: 100px"></textarea>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="email" [(ngModel)]="member.email" type="text" class="form-control" id="email">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label class="col-md-4 col-lg-3 col-form-label">Giới tính:</label>
+                      <div class="col-md-4 col-lg-9 d-flex align-items-center">
+                        <input [(ngModel)]="member.gioiTinh" class="me-1" type="radio">
+                        <span class="me-2">Nam</span>
+                        <input [(ngModel)]="!member.gioiTinh" class="me-1" type="radio">
+                        <span>Nữ</span>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="SoCMND" class="col-md-4 col-lg-3 col-form-label">Số CMND</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="socmnd" [(ngModel)]="member.soCMND" type="text" class="form-control" id="SoCMND">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="NgayCapCMND" class="col-md-4 col-lg-3 col-form-label">Ngày cấp CMND</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="ngaycapcmnd" [(ngModel)]="member.ngayCapCMND" type="text" class="form-control" id="NgayCapCMND">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="NoiCapCMND" class="col-md-4 col-lg-3 col-form-label">Nơi cấp CMND</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="noicapcmnd" [(ngModel)]="member.noiCapCMND" type="text" class="form-control" id="NoiCapCMND">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Điện thoại</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="phone" [(ngModel)]="member.phone" type="text" class="form-control" id="Phone">
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button form="editForm" type="submit" [disabled]="!editForm.dirty" class="btn btn-primary">Lưu thay đổi</button>
+                    </div>
+                  </form>
+                </div>
+                <!--End tab chỉnh sửa thông tin tài khoản-->
 
-              <!--Start tab đổi mật khẩu-->
-              <div class="tab-pane fade pt-3" id="profile-change-password">
-                <form>
-                  <div class="row mb-3">
-                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu hiện tại</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="password" type="password" class="form-control" id="currentPassword"></div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu mới</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="newpassword" type="password" class="form-control" id="newPassword"></div>
-                  </div>
-                  <div class="row mb-3">
-                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Nhập lại mật khẩu mới</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="renewpassword" type="password" class="form-control" id="renewPassword"></div>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
-                  </div>
-                </form>
+                <!--Start tab cài đặt thông báo-->
+                <div class="tab-pane fade pt-3" id="profile-settings">
+                  <form>
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Thông báo thư điện tử</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="changesMade" checked>
+                          <label class="form-check-label" for="changesMade"> Những thay đổi được thực hiện cho tài khoản của bạn </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="newProducts" checked>
+                          <label class="form-check-label" for="newProducts"> Thông tin về sản phẩm và dịch vụ mới </label>
+                        </div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="proOffers">
+                          <label class="form-check-label" for="proOffers"> Tiếp thị và cung cấp khuyến mãi </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
+                          <label class="form-check-label" for="securityNotify"> Cảnh báo bảo mật </label></div>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                    </div>
+                  </form>
+                </div>
+                <!--End tab cài đặt thông báo-->
+
+                <!--Start tab đổi mật khẩu-->
+                <div class="tab-pane fade pt-3" id="profile-change-password">
+                  <form>
+                    <div class="row mb-3">
+                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu hiện tại</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="password" type="password" class="form-control" id="currentPassword"></div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu mới</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="newpassword" type="password" class="form-control" id="newPassword"></div>
+                    </div>
+                    <div class="row mb-3">
+                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Nhập lại mật khẩu mới</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="renewpassword" type="password" class="form-control" id="renewPassword"></div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+                    </div>
+                  </form>
+                </div>
+                <!--End tab đổi mật khẩu-->
               </div>
-              <!--End tab đổi mật khẩu-->
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>
