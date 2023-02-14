@@ -12,6 +12,7 @@ import { MatSort } from '@angular/material/sort';
 import { MemberDetailComponent } from '../member-detail/member-detail.component';
 import { MemberEditComponent } from '../member-edit/member-edit.component';
 import { MemberCreateComponent } from '../member-create/member-create.component';
+import { DeleteFormComponent } from '../../../../layouts/theme/delete-form/delete-form.component';
 
 @Component({
   selector: 'app-member-list',
@@ -65,6 +66,7 @@ export class MemberListComponent implements OnInit {
   }
 
   deleteMember(userName: string) {
+    this.dialog.open(DeleteFormComponent);
     this.memberService.deleteMember(userName).subscribe({
       next: () => this.toastr.success('Xoá nhân viên thành công'),
       error: (err) => {

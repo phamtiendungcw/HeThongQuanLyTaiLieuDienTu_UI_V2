@@ -10,11 +10,14 @@ import { TextInputComponent } from './text-input/text-input.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from "@angular/material/input";
-import { MatListModule } from "@angular/material/list";
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { DeleteFormComponent } from './delete-form/delete-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [TextInputComponent, BreadcrumbComponent],
+  declarations: [TextInputComponent, BreadcrumbComponent, DeleteFormComponent],
   imports: [
     CommonModule,
     ThemeRoutingModule,
@@ -22,6 +25,8 @@ import { MatListModule } from "@angular/material/list";
     ReactiveFormsModule,
     MatInputModule,
     MatListModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   exports: [TextInputComponent, BreadcrumbComponent],
 })
