@@ -9,7 +9,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Member } from '../../../../models/member';
 import { MemberDetailComponent } from '../member-detail/member-detail.component';
 import { MemberEditComponent } from '../member-edit/member-edit.component';
 import { MemberCreateComponent } from '../member-create/member-create.component';
@@ -32,7 +31,6 @@ export class MemberListComponent implements OnInit {
     'hanhDong',
   ];
   dataSource!: MatTableDataSource<any>;
-  clickedRows = new Set<Member>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

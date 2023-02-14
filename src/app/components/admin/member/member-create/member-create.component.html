@@ -1,1 +1,17 @@
-<p>member-create works!</p>
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+
+<form [formGroup]="registerForm" (ngSubmit)="registerForm.valid" autocomplete="off" class="row g-3 needs-validation" novalidate>
+  <app-text-input [formControl]="$any(registerForm.controls['hoVaTen'])" [label]="'Họ và tên'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['email'])" [label]="'Email'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['username'])" [label]="'Tên đăng nhập'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'Mật khẩu'" [type]="'password'"></app-text-input>
+  <div class="row" *ngIf="validationErrors.length > 0">
+    <ul class="text-danger">
+      <li *ngFor="let error of validationErrors">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+</form>

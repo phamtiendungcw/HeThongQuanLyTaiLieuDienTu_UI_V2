@@ -35,6 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { ThemeModule } from '../../layouts/theme/theme.module';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     CommonModule,
     AdminRoutingModule,
+    ThemeModule,
     FormsModule,
     MatToolbarModule,
     MatSidenavModule,
