@@ -12,6 +12,7 @@ import { MemberDetailComponent } from '../member-detail/member-detail.component'
 import { MemberEditComponent } from '../member-edit/member-edit.component';
 import { MemberCreateComponent } from '../member-create/member-create.component';
 import { DeleteFormComponent } from '../../../../layouts/theme/delete-form/delete-form.component';
+import { ExportService } from '../../../../service/export.service';
 
 @Component({
   selector: 'app-member-list',
@@ -42,7 +43,8 @@ export class MemberListComponent implements OnInit {
 
   constructor(
     private memberService: MemberService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private exportService: ExportService
   ) {}
 
   ngOnInit(): void {
@@ -121,5 +123,12 @@ export class MemberListComponent implements OnInit {
           this.getMembers();
         }
       });
+  }
+
+  exportToExcel() {
+    this.exportService.exportExcel(
+      this.dataSource.data,
+      'Thông tin toàn bộ nhân viên'
+    );
   }
 }
