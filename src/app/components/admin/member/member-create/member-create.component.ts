@@ -18,7 +18,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class MemberCreateComponent implements OnInit {
   createForm!: FormGroup;
   validationErrors: string[] = [];
-  startDate = new Date(1990, 1, 1);
+  startDate = new Date();
+  minDate = new Date(1950, 1, 1);
 
   constructor(
     private accountService: AccountService,
