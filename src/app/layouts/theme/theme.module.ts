@@ -15,9 +15,16 @@ import { MatListModule } from '@angular/material/list';
 import { DeleteFormComponent } from './delete-form/delete-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
-  declarations: [TextInputComponent, BreadcrumbComponent, DeleteFormComponent],
+  declarations: [
+    TextInputComponent,
+    BreadcrumbComponent,
+    DeleteFormComponent,
+    PhotoEditorComponent,
+  ],
   imports: [
     CommonModule,
     ThemeRoutingModule,
@@ -27,7 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatListModule,
     MatDialogModule,
     MatButtonModule,
+    FileUploadModule,
   ],
-  exports: [TextInputComponent, BreadcrumbComponent],
+  exports: [TextInputComponent, BreadcrumbComponent, PhotoEditorComponent],
 })
 export class ThemeModule {}

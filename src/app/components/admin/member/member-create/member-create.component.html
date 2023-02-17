@@ -8,17 +8,17 @@
   <app-text-input [formControl]="$any(createForm.controls['email'])" [label]="'Email'"></app-text-input>
   <app-text-input [formControl]="$any(createForm.controls['hoVaTen'])" [label]="'Họ và tên'"></app-text-input>
   <mat-form-field appearance="outline">
+    <mat-label>Ngày sinh:</mat-label>
+    <input [matDatepicker]="pickerNgaySinh" formControlName="ngayThangNamSinh" matInput>
+    <mat-datepicker-toggle [for]="pickerNgaySinh" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #pickerNgaySinh [startAt]="startDate"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="mt-1">
     <mat-label>Giới tính:</mat-label>
     <mat-select formControlName="gioiTinh" placeholder="Giới tính">
       <mat-option value="true">Nam</mat-option>
       <mat-option value="false">Nữ</mat-option>
     </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Ngày sinh:</mat-label>
-    <input formControlName="ngayThangNamSinh" matInput [matDatepicker]="pickerNgaySinh">
-    <mat-datepicker-toggle matSuffix [for]="pickerNgaySinh"></mat-datepicker-toggle>
-    <mat-datepicker [startAt]="startDate" #pickerNgaySinh></mat-datepicker>
   </mat-form-field>
   <div class="row" *ngIf="validationErrors.length > 0">
     <ul class="text-danger">

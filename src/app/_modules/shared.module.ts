@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [],
@@ -24,7 +25,13 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxSpinnerModule.forRoot({
       type: 'square-jelly-box',
     }),
+    FileUploadModule,
   ],
-  exports: [BrowserAnimationsModule, ToastrModule, NgxSpinnerModule],
+  exports: [
+    BrowserAnimationsModule,
+    ToastrModule,
+    NgxSpinnerModule,
+    FileUploadModule,
+  ],
 })
 export class SharedModule {}

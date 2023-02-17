@@ -43,4 +43,12 @@ export class MemberService {
   deleteMember(username: string) {
     return this.http.delete(this.baseUrl + 'user/' + username);
   }
+
+  setMainPhoto(photoId: number) {
+    return this.http.put(this.baseUrl + 'user/set-main-photo/' + photoId, {});
+  }
+
+  deletePhoto(photoId: number) {
+    return this.http.delete(this.baseUrl + 'user/delete-photo/' + photoId);
+  }
 }

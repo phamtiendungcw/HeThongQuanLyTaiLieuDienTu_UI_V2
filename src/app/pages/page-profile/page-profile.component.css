@@ -11,8 +11,8 @@ a {
 }
 
 .container-profile {
-  background-color: whitesmoke;
-  height: 90px;
+  background-color: #444444;
+  height: 150vh;
 }
 
 .container {
@@ -28,11 +28,6 @@ a {
 .img-profile {
   height: 200px;
   width: 200px;
-}
-
-.img-edit {
-  height: 72px;
-  width: 72px;
 }
 
 /*# sourceMappingURL=page-profile.component.css.map */

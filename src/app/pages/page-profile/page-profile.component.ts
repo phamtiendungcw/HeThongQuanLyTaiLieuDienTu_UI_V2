@@ -16,7 +16,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./page-profile.component.scss'],
 })
 export class PageProfileComponent implements OnInit {
-  @ViewChild('editForm') editForm: NgForm | undefined;
+  @ViewChild('editForm') editForm!: NgForm;
   member!: Member;
 
   constructor(
@@ -36,6 +36,7 @@ export class PageProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMember();
+    if (!this.member) return;
   }
 
   loadMember() {

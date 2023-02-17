@@ -2,8 +2,8 @@
   ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
   -->
 
-<div class="container-profile vh-100 d-flex align-items-center">
-  <div class="container card p-5 mat-elevation-z1">
+<div class="container-profile pt-3">
+  <div class="container card p-5 mat-elevation-z4">
     <h1 class="title fw-bold text-uppercase">Thông tin cá nhân</h1>
     <div class="col-12">
       <div class="alert alert-info" *ngIf="editForm.dirty">
@@ -14,8 +14,8 @@
       <div class="row">
         <div class="col-xl-4">
           <div class="card">
-            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-              <img src="{{member.photoUrl || './assets/images/user.png'}}" alt="Profile" class="rounded-circle mb-3 img-profile">
+            <div [(ngModel)]="member" [ngModelOptions]="{standalone: true}" class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+              <img alt="Profile" class="rounded-circle mb-3 img-profile" src="{{member.photoUrl}}">
               <h2 class="fs-2 fw-bold">{{member.hoVaTen | titlecase}}</h2>
               <h3 class="fw-light fs-5">@{{member.userName}}</h3>
             </div>
@@ -100,32 +100,23 @@
                 <!--Start tab chỉnh sửa thông tin tài khoản-->
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                   <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
-                    <div class="row mb-3">
-                      <label class="col-md-4 col-lg-3 col-form-label">Hình ảnh hồ sơ cá nhân</label>
-                      <div class="col-md-8 col-lg-9">
-                        <img class="img-edit" src="{{member.photoUrl || './assets/images/user.png'}}" alt="Profile">
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm me-1" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                        </div>
-                      </div>
-                    </div>
+                    <app-photo-editor [member]="member"></app-photo-editor>
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Họ và tên</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" [(ngModel)]="member.hoVaTen" type="text" class="form-control" id="fullName">
+                        <input [(ngModel)]="member.hoVaTen" class="form-control" id="fullName" name="hoVaTen" type="text">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="NamSinh" class="col-md-4 col-lg-3 col-form-label">Ngày sinh</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="namsinh" [(ngModel)]="member.ngayThangNamSinh" type="text" class="form-control" id="NamSinh">
+                        <input [(ngModel)]="member.ngayThangNamSinh" class="form-control" id="NamSinh" name="ngayThangNamSinh" type="text">
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="address" class="col-md-4 col-lg-3 col-form-label">Địa chỉ:</label>
+                      <label class="col-md-4 col-lg-3 col-form-label" for="diaChi">Địa chỉ:</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="address" [(ngModel)]="member.diaChi" class="form-control" id="address" style="height: 100px"></textarea>
+                        <textarea [(ngModel)]="member.diaChi" class="form-control" id="diaChi" name="diaChi" style="height: 100px"></textarea>
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -136,7 +127,7 @@
                     </div>
                     <div class="row mb-3">
                       <label class="col-md-4 col-lg-3 col-form-label">Giới tính:</label>
-                      <div class="col-md-4 col-lg-9 d-flex align-items-center">
+                      <div [(ngModel)]="member.gioiTinh" class="col-md-4 col-lg-9 d-flex align-items-center" name="gioiTinh">
                         <input [(ngModel)]="member.gioiTinh" class="me-1" type="radio">
                         <span class="me-2">Nam</span>
                         <input [(ngModel)]="!member.gioiTinh" class="me-1" type="radio">
@@ -146,19 +137,19 @@
                     <div class="row mb-3">
                       <label for="SoCMND" class="col-md-4 col-lg-3 col-form-label">Số CMND</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="socmnd" [(ngModel)]="member.soCMND" type="text" class="form-control" id="SoCMND">
+                        <input [(ngModel)]="member.soCMND" class="form-control" id="SoCMND" name="soCMND" type="text">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="NgayCapCMND" class="col-md-4 col-lg-3 col-form-label">Ngày cấp CMND</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="ngaycapcmnd" [(ngModel)]="member.ngayCapCMND" type="text" class="form-control" id="NgayCapCMND">
+                        <input [(ngModel)]="member.ngayCapCMND" class="form-control" id="NgayCapCMND" name="ngayCapCMND" type="text">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="NoiCapCMND" class="col-md-4 col-lg-3 col-form-label">Nơi cấp CMND</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="noicapcmnd" [(ngModel)]="member.noiCapCMND" type="text" class="form-control" id="NoiCapCMND">
+                        <input [(ngModel)]="member.noiCapCMND" class="form-control" id="NoiCapCMND" name="NoiCapCMND" type="text">
                       </div>
                     </div>
                     <div class="row mb-3">
