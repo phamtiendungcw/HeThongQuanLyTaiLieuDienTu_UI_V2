@@ -36,8 +36,8 @@
           <span>Đăng nhập</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" [routerLink]="['/account/profile']" routerLinkActive="active">
+      <li *ngIf="(accountService.currentUser$ | async) as user" class="nav-item">
+        <a [routerLink]="['/account/profile', user.username]" class="nav-link collapsed" routerLinkActive="active">
           <i class="bi bi-person"></i>
           <span>Thông tin cá nhân</span>
         </a>
