@@ -4,6 +4,11 @@
 
 <div class="container-profile pt-3">
   <div class="container card p-5 mat-elevation-z4">
+    <div class="d-flex align-items-center justify-content-start">
+      <button [routerLink]="['/admin/home']" class="btn btn-secondary">
+        <i class="bi bi-caret-left"></i>&nbsp;Quay trở về trang chủ
+      </button>
+    </div>
     <h1 class="title fw-bold text-uppercase">Thông tin cá nhân</h1>
     <div class="col-12">
       <div class="alert alert-info" *ngIf="editForm.dirty">
@@ -15,7 +20,7 @@
         <div class="col-xl-4">
           <div class="card">
             <div [(ngModel)]="member" [ngModelOptions]="{standalone: true}" class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-              <img alt="Profile" class="rounded-circle mb-3 img-profile" src="{{member.photoUrl}}">
+              <img alt="Profile" class="rounded-circle mb-3 img-profile" src="{{member.photoUrl || 'assets/images/user.png'}}">
               <h2 class="fs-2 fw-bold">{{member.hoVaTen | titlecase}}</h2>
               <h3 class="fw-light fs-5">@{{member.userName}}</h3>
             </div>
@@ -42,7 +47,7 @@
               <div class="tab-content pt-2">
                 <!--Start tab thông tin tài khoản-->
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  <h5 class="card-title fw-bold">Chi tiết hồ sơ</h5>
+                  <h5 class="card-title fs-5 fw-bold">Chi tiết hồ sơ</h5>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Họ và tên:</div>
                     <div class="col-lg-9 col-md-8">{{member.hoVaTen}}</div>
@@ -101,6 +106,7 @@
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                   <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
                     <app-photo-editor [member]="member"></app-photo-editor>
+                    <h5 class="card-title fs-5 fw-bold">Chỉnh sửa thông tin người dùng</h5>
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Họ và tên</label>
                       <div class="col-md-8 col-lg-9">
