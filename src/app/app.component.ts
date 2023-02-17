@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'Hệ thống quản lý tài liệu ện tử UI';
+  title = 'Hệ thống quản lý tài liệu điện tử dành cho doanh nghiệp';
 
   constructor(private accountService: AccountService, private router: Router) {}
 
