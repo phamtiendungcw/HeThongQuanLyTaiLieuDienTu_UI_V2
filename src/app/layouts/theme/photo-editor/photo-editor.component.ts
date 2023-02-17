@@ -54,7 +54,7 @@ export class PhotoEditorComponent implements OnInit {
           this.user.photoUrl = photo.url;
           this.accountService.setCurrentUser(this.user);
           this.member.photoUrl = photo.url;
-          this.member.photos.forEach((p) => {
+          this.member.photos?.forEach((p) => {
             if (p.isMain) p.isMain = false;
             if (p.id === photo.id) p.isMain = true;
           });
@@ -71,7 +71,7 @@ export class PhotoEditorComponent implements OnInit {
     this.memberService.deletePhoto(photoId).subscribe({
       next: (_) => {
         if (this.member) {
-          this.member.photos = this.member.photos.filter(
+          this.member.photos = this.member.photos?.filter(
             (x) => x.id !== photoId
           );
         }
@@ -101,7 +101,7 @@ export class PhotoEditorComponent implements OnInit {
     this.uploader.onSuccessItem = (item, response) => {
       if (response) {
         const photo = JSON.parse(response);
-        this.member?.photos.push(photo);
+        this.member?.photos?.push(photo);
       }
     };
   }

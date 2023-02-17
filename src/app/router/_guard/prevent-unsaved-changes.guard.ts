@@ -3,7 +3,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree, } from '@angular/router';
+import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PageProfileComponent } from '../../pages/page-profile/page-profile.component';
 
@@ -16,16 +16,12 @@ export class PreventUnsavedChangesGuard implements CanDeactivate<unknown> {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-      if (component.editForm?.dirty) {
-        return confirm(
-          'Bạn có chắc chắn muốn thoát khỏi trang này? Mọi thay đổi chưa được lưu sẽ bị mất'
-        );
-      }
-      return true;
+  ): Observable<boolean> | boolean {
+    if (component.editForm?.dirty) {
+      return confirm(
+        'Bạn có chắc chắn muốn thoát khỏi trang này? Mọi thay đổi chưa được lưu sẽ bị mất'
+      );
     }
+    return true;
+  }
 }

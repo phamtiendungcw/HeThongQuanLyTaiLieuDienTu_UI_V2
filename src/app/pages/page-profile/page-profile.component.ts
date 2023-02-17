@@ -9,6 +9,8 @@ import { MemberService } from '../../service/member.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import { User } from '../../models/user';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-page-profile',
@@ -18,13 +20,18 @@ import { NgForm } from '@angular/forms';
 export class PageProfileComponent implements OnInit {
   @ViewChild('editForm') editForm!: NgForm;
   member!: Member;
+  user: User | null = null;
 
   constructor(
-    private accountService: AccountService,
+    public accountService: AccountService,
     private memberService: MemberService,
     private route: ActivatedRoute,
     private toastr: ToastrService
-  ) {}
+  ) {
+    accountService.currentUser$.pipe(take(1)).subscribe({
+      next: (user) => (this.user = user),
+    });
+  }
 
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
@@ -36,23 +43,26 @@ export class PageProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMember();
-    if (!this.member) return;
   }
 
   loadMember() {
-    const username = this.route.snapshot.paramMap.get('username');
-    if (!username) return;
-    this.memberService.getMember(username).subscribe({
-      next: (member) => (this.member = member),
+    if (!this.user) return;
+    this.memberService.getMember(this.user.username).subscribe({
+      next: (member) => {
+        this.member = member;
+      },
+      error: (err) => console.log(err),
     });
   }
 
   updateMember() {
     this.memberService.updateMember(this.editForm?.value).subscribe({
       next: () => {
+        this.member = this.editForm.value;
         this.toastr.success('Thông tin người dùng đã được cập nhật thành công');
         this.editForm?.reset(this.member);
       },
+      error: (err) => console.log(err),
     });
   }
 }

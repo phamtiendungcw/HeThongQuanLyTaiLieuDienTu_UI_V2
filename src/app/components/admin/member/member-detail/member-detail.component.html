@@ -20,6 +20,11 @@
     </mat-form-field>
 
     <mat-form-field appearance="standard">
+      <mat-label>Số điện thoại</mat-label>
+      <input [(ngModel)]="member.phone" matInput readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
       <mat-label>Ngày tháng năm sinh</mat-label>
       <input matInput [(ngModel)]="member.ngayThangNamSinh" readonly>
     </mat-form-field>

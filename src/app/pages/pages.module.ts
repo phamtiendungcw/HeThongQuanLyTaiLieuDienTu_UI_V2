@@ -13,6 +13,10 @@ import { PageProfileComponent } from './page-profile/page-profile.component';
 import { PageRegisterComponent } from './page-register/page-register.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../layouts/theme/theme.module';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,10 @@ import { ThemeModule } from '../layouts/theme/theme.module';
     FormsModule,
     ReactiveFormsModule,
     ThemeModule,
+    MatRadioModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
 })
 export class PagesModule {}

@@ -22,6 +22,7 @@ const routes: Routes = [
         path: 'profile',
         component: PageProfileComponent,
         canActivate: [AuthGuard],
+        canDeactivate: [PreventUnsavedChangesGuard],
       },
       {
         path: 'profile/:username',
