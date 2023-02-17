@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [],
@@ -20,7 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
       progressBar: true,
       progressAnimation: 'increasing',
     }), // ToastrModule added
+    NgxSpinnerModule.forRoot({
+      type: 'square-jelly-box',
+    }),
   ],
-  exports: [BrowserAnimationsModule, ToastrModule],
+  exports: [BrowserAnimationsModule, ToastrModule, NgxSpinnerModule],
 })
 export class SharedModule {}

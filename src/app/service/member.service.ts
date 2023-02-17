@@ -4,7 +4,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Member } from '../models/member';
 
@@ -13,7 +13,7 @@ import { Member } from '../models/member';
 })
 export class MemberService {
   baseUrl = environment.baseUrl;
-  member: Member[] = [];
+  members: Member[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -26,13 +26,18 @@ export class MemberService {
   }
 
   getMember(username: string) {
-    const member = this.member.find((x) => x.userName == username);
+    const member = this.members.find((x) => x.userName == username);
     if (member) return of(member);
     return this.http.get<Member>(this.baseUrl + 'user/' + username);
   }
 
   updateMember(member: Member) {
-    return this.http.put(this.baseUrl + 'user', member);
+    return this.http.put(this.baseUrl + 'user', member).pipe(
+      map(() => {
+        const index = this.members.indexOf(member);
+        this.members[index] = { ...this.members[index], ...member };
+      })
+    );
   }
 
   deleteMember(username: string) {

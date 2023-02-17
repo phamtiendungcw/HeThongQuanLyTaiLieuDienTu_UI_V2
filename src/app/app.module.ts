@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptor } from './router/_interceptor/error.interceptor';
 import { JwtInterceptor } from './router/_interceptor/jwt.interceptor';
+import { LoadingInterceptor } from './router/_interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { JwtInterceptor } from './router/_interceptor/jwt.interceptor';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

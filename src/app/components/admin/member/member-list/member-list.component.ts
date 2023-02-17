@@ -85,17 +85,10 @@ export class MemberListComponent implements OnInit {
   }
 
   openDetailForm(element: any) {
-    this.dialog
-      .open(MemberDetailComponent, {
-        maxWidth: '500px',
-        data: element,
-      })
-      .afterClosed()
-      .subscribe((value) => {
-        if (value) {
-          this.getMembers();
-        }
-      });
+    this.dialog.open(MemberDetailComponent, {
+      maxWidth: '500px',
+      data: element,
+    });
   }
 
   openEditForm(element: any) {

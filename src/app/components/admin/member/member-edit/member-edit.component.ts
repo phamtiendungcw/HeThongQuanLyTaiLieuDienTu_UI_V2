@@ -73,6 +73,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   updateMember() {
+    this.toastr.toastrConfig.positionClass = 'toast-bottom-right';
     if (this.editForm.controls['gioiTinh'].value === 'true') {
       this.editForm.controls['gioiTinh'].setValue(true);
     } else {
