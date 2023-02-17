@@ -1,0 +1,167 @@
+/*!
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
+.header {
+  transition: all 0.5s;
+  z-index: 997;
+  height: 60px;
+  box-shadow: 0 2px 20px rgba(1, 41, 112, 0.1);
+  background-color: #fff;
+  padding-left: 20px;
+
+  .toggle-sidebar-btn {
+    font-size: 32px;
+    padding-left: 10px;
+    cursor: pointer;
+    color: #012970;
+  }
+
+  .search-bar {
+    min-width: 360px;
+    padding: 0 20px;
+  }
+}
+
+.logo {
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+
+  img {
+    width: 32px;
+    height: 32px;
+    margin-right: 6px;
+  }
+
+  span {
+    font-size: 26px;
+    font-weight: 700;
+    color: #012970;
+    font-family: "Nunito", sans-serif;
+  }
+}
+
+@media (min-width: 1200px) {
+  .logo {
+    width: 280px;
+  }
+}
+
+@media (max-width: 1199px) {
+
+  .header {
+    .search-bar {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      box-shadow: 0 0 15px 0 rgba(1, 41, 112, 0.1);
+      background: white;
+      z-index: 9999;
+      transition: 0.3s;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .search-bar-show {
+      top: 60px;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.header .search-form {
+  width: 100%;
+
+  input {
+    font-size: 14px;
+    color: #012970;
+    border: 1px solid rgba(1, 41, 112, 0.2);
+    padding: 7px 38px 7px 8px;
+    border-radius: 3px;
+    transition: 0.3s;
+    width: 100%;
+  }
+
+  &:focus, &:hover {
+    outline: none;
+    box-shadow: 0 0 10px 0 rgba(1, 41, 112, 0.15);
+    border: 1px solid rgba(1, 41, 112, 0.3);
+  }
+
+  button {
+    border: 0 !important;
+    padding: 0 !important;
+    margin-left: -30px;
+    background: none;
+
+    i {
+      color: #012970;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# Header Nav
+--------------------------------------------------------------*/
+.header-nav ul {
+  list-style: none;
+}
+
+.header-nav > ul {
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav .nav-icon {
+  font-size: 20px;
+  color: #012970;
+}
+
+.header-nav .nav-profile {
+  color: #012970;
+}
+
+.header-nav .nav-profile img {
+  max-height: 36px;
+}
+
+.header-nav .nav-profile span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.header-nav .profile {
+  min-width: 240px;
+  padding-bottom: 0;
+}
+
+.header-nav .profile .dropdown-header h6 {
+  font-size: 18px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #444444;
+}
+
+.header-nav .profile .dropdown-header span {
+  font-size: 14px;
+}
+
+.header-nav .profile .dropdown-item {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+.header-nav .profile .dropdown-item i {
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 0;
+}
+
+.header-nav .profile .dropdown-item:hover {
+  background-color: #f6f9ff;
+}

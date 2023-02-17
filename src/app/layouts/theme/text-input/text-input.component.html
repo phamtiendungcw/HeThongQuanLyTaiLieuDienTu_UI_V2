@@ -1,1 +1,40 @@
-<p>text-input works!</p>
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+
+<div class="col-12">
+  <label class="form-label">{{label}}</label>
+  <div class="input-group has-validation" *ngIf="label=='Tên đăng nhập'">
+    <span class="input-group-text" id="inputGroupPrepend">@</span>
+    <input [class.is-invalid]="(control.touched||control.dirty)&&control.invalid" type="{{type}}" class="form-control"
+           [formControl]="control" placeholder="Nhập {{label|lowercase}}">
+    <div *ngIf="control.errors?.['required']" class="invalid-feedback">
+      Mục {{label|lowercase}} bắt buộc phải có giá trị
+    </div>
+    <div *ngIf="control.errors?.['maxlength']" class="invalid-feedback">
+      {{label}} đã đạt tối đa ký tự cho phép {{control.errors?.['maxlength[`requiredLength`]']}}
+    </div>
+  </div>
+  <input
+    [class.is-invalid]="(control.touched || control.dirty) && control.invalid"
+    type="{{type}}"
+    class="form-control"
+    [formControl]="control"
+    placeholder="Nhập {{label | lowercase}}"
+    *ngIf="label!='Tên đăng nhập'">
+  <div *ngIf="control.errors?.['required']" class="invalid-feedback">
+    Mục {{label|lowercase}} bắt buộc phải có giá trị
+  </div>
+  <div *ngIf="control.errors?.['email']" class="invalid-feedback">
+    {{label}} không đúng định dạng
+  </div>
+  <div *ngIf="control.errors?.['maxlength']" class="invalid-feedback">
+    {{label}} đã đạt tối đa ký tự cho phép {{control.errors?.['maxlength[`requiredLength`]']}}
+  </div>
+  <div *ngIf="control.errors?.['minlength']" class="invalid-feedback">
+    {{label}} chưa đạt tối thiểu ký tự cho phép {{control.errors?.['minlength[`requiredLength`]']}}
+  </div>
+  <div *ngIf="control.errors?.['isMatching']" class="invalid-feedback">
+    Hãy nhập đúng mật khẩu của bạn
+  </div>
+</div>

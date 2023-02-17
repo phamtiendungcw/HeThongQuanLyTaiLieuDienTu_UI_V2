@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
+
+@charset "UTF-8";
+/*!
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
+.login {
+  background: whitesmoke;
+}
+
+.h-custom {
+  height: calc(100% - 40px);
+}
+
+.form-signIn {
+  background: white;
+  padding: 60px 60px 60px 60px;
+  border-radius: 20px;
+}
+
+.form-signIn .form-floating input {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.form-signIn .form-floating:focus-within {
+  z-index: 2;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.img-logo {
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+/*# sourceMappingURL=page-login.component.css.map */

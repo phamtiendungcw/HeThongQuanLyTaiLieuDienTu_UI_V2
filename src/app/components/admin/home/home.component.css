@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
+
+@charset "UTF-8";
+/*!
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
+.custom-toolbar {
+  position: fixed;
+  z-index: 50;
+  height: 60px;
+}
+
+.custom-sidenav {
+  width: 300px;
+  height: 100vh;
+}
+
+.custom-sidenav-content {
+  margin-top: 60px;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+/*# sourceMappingURL=home.component.css.map */

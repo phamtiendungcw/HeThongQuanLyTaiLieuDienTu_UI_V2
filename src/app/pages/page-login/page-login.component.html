@@ -1,1 +1,59 @@
-<p>page-login works!</p>
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+
+<section class="vh-100 login">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="./assets/images/bg-login.png" class="img-fluid" alt="Sample image"/>
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 form-signIn">
+        <div class="mb-1 d-flex justify-content-center">
+          <img class="img-logo" src="./assets/images/logo.png" alt="Logo"/>
+        </div>
+        <h2 class="text-center mb-5">Đăng nhập trang quản trị hệ thống - EDMS Lab</h2>
+        <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="loginEventClicked()" autocomplete="off">
+          <!-- Email input -->
+          <div class="form-floating mb-3">
+            <input [class.is-invalid]="loginForm.get('username')?.errors && loginForm.get('username')?.touched" class="form-control form-control-lg" formControlName="username" id="email" placeholder="tennguoidung_chucvu@edms.com" type="email"/>
+            <label class="form-label" for="email">Tên đăng nhập</label>
+            <div class="invalid-feedback" *ngIf="loginForm.get('username')?.hasError('required')">Hãy nhập tên người dùng</div>
+            <div *ngIf="loginForm.get('username')?.hasError('maxlength')" class="invalid-feedback">Nhập tên người dùng tối đa 50 ký tự</div>
+          </div>
+          <!-- Password input -->
+          <div class="form-floating mb-3">
+            <input [class.is-invalid]="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="form-control form-control-lg" formControlName="password" id="password" placeholder="Mật khẩu người dùng" type="password"/>
+            <label class="form-label" for="password">Mật khẩu</label>
+            <div class="invalid-feedback" *ngIf="loginForm.get('password')?.hasError('required')">Hãy nhập mật khẩu</div>
+            <div *ngIf="loginForm.get('password')?.hasError('minlength')" class="invalid-feedback">Nhập mật khẩu tối thiểu 8 ký tự</div>
+            <div *ngIf="loginForm.get('password')?.hasError('maxlength')" class="invalid-feedback">Nhập mật khẩu tối đa 32 ký tự</div>
+          </div>
+          <!-- Checkbox lưu tài khoản trong vòng 7 ngày tại localhost -->
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox" formControlName="isRememberMe"/>
+              <label class="form-check-label">
+                Remember me (7 days)
+              </label>
+            </div>
+          </div>
+          <!-- Button -->
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Đăng nhập
+            </button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">
+              Nếu bạn chưa có tài khoản?
+              <a (click)="registerEventClicked()" class="link-danger"> Nhấn vào đây để đăng ký tài khoản</a>
+            </p>
+          </div>
+        </form>
+        <div class="text-dark mt-5 mb-md-0 d-flex justify-content-center">Copyright © 2022 - 2023 by&nbsp;
+          <a href="https://twitter.com/dungphamcw" target="_blank">Phạm Tiến Dũng (DungCW)</a>. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

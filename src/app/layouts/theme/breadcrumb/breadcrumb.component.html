@@ -1,0 +1,19 @@
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+
+<div class="d-flex align-items-center">
+  <div class="breadcrumb">
+    <a class="d-flex align-items-center" [routerLink]="['/admin/home']">
+      <mat-icon class="fs-5">home</mat-icon>
+      <mat-label>Trang chủ</mat-label>
+    </a>
+  </div>
+  <ng-container *ngFor="let crumb of crumbs;">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="[crumb.router]" routerLinkActive="active">&nbsp;/&nbsp;{{ crumb.crumb }}</a>
+      </li>
+    </ol>
+  </ng-container>
+</div>

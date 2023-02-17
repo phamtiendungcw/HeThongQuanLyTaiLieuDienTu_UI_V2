@@ -1,1 +1,34 @@
-<p>member-create works!</p>
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+<h1 class="text-center" mat-dialog-title>Thêm mới nhân viên</h1>
+<form [formGroup]="createForm" (ngSubmit)="createForm.valid" autocomplete="off" class="row g-3 needs-validation" novalidate>
+  <app-text-input [formControl]="$any(createForm.controls['username'])" [label]="'Tên đăng nhập'"></app-text-input>
+  <app-text-input [formControl]="$any(createForm.controls['password'])" [label]="'Mật khẩu'" [type]="'password'"></app-text-input>
+  <app-text-input [formControl]="$any(createForm.controls['email'])" [label]="'Email'"></app-text-input>
+  <app-text-input [formControl]="$any(createForm.controls['hoVaTen'])" [label]="'Họ và tên'"></app-text-input>
+  <mat-form-field appearance="outline">
+    <mat-label>Ngày sinh:</mat-label>
+    <input [matDatepicker]="pickerNgaySinh" formControlName="ngayThangNamSinh" matInput>
+    <mat-datepicker-toggle [for]="pickerNgaySinh" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #pickerNgaySinh [startAt]="startDate"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="mt-1">
+    <mat-label>Giới tính:</mat-label>
+    <mat-select formControlName="gioiTinh" placeholder="Giới tính">
+      <mat-option value="true">Nam</mat-option>
+      <mat-option value="false">Nữ</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="row" *ngIf="validationErrors.length > 0">
+    <ul class="text-danger">
+      <li *ngFor="let error of validationErrors">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+</form>
+<mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-button [mat-dialog-close]="false" [routerLink]="['/admin/home/members']">Hủy bỏ</button>
+  <button class="btn btn-primary" mat-raised-button mat-button [mat-dialog-close]="true" (click)="addMember()">Lưu</button>
+</mat-dialog-actions>

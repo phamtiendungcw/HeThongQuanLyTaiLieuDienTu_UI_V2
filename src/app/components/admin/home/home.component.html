@@ -1,1 +1,18 @@
-<p>home works!</p>
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+
+<mat-toolbar class="custom-toolbar">
+  <app-header (toggleSidebar)="sidebarToggle($event)"></app-header>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav class="custom-sidenav" #sidenav="matSidenav" mode="side" [opened]="sidebarOpen">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content class="custom-sidenav-content">
+    <div class="main-content" id="main-content">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer class="custom-footer"></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

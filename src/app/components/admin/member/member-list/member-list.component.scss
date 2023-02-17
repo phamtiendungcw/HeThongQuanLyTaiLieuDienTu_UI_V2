@@ -1,0 +1,57 @@
+/*!
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
+
+a {
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-row .mat-cell {
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  background-color: whitesmoke;
+}
+
+
+.member-list {
+  background: #ffffff;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.modal-backdrop {
+  /* bug fix - no overlay */
+  display: none;
+}
+
+.modal {
+  /* bug fix - custom overlay */
+  background-color: rgba(10, 10, 10, 0.45);
+}
+
+.modal-dialog {
+  margin-top: 15rem;
+}
+
+.search {
+  max-width: 300px;
+  display: flex;
+  flex: auto;
+  background-color: #fff;
+}
+
+.btn-action {
+  padding: 5px;
+  display: flex;
+  flex: auto;
+  align-items: center;
+  justify-content: center;
+}

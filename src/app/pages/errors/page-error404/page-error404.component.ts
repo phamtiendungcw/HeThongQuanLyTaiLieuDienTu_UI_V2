@@ -1,15 +1,16 @@
+/*
+ * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page-error404',
   templateUrl: './page-error404.component.html',
-  styleUrls: ['./page-error404.component.scss']
+  styleUrls: ['./page-error404.component.scss'],
 })
 export class PageError404Component implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
