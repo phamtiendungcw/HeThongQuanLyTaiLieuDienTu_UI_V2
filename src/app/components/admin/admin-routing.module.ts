@@ -15,6 +15,9 @@ import { PageError404Component } from '../../pages/errors/page-error404/page-err
 import { PageLoginComponent } from '../../pages/page-login/page-login.component';
 import { PageRegisterComponent } from '../../pages/page-register/page-register.component';
 import { PageError500Component } from '../../pages/errors/page-error500/page-error500.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminGuard } from '../../router/_guard/admin.guard';
+import { MemberGuard } from '../../router/_guard/member.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -24,9 +27,20 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: HomeComponent,
     children: [
-      { path: 'members', component: MemberListComponent },
+      {
+        path: 'admin',
+        component: AdminPanelComponent,
+        canActivate: [AdminGuard],
+      },
+      {
+        path: 'members',
+        component: MemberListComponent,
+        canActivate: [AdminGuard],
+      },
       {
         path: 'documents',
+        runGuardsAndResolvers: 'always',
+        canActivate: [MemberGuard],
         component: DocumentListComponent,
         children: [
           { path: ':id/view', component: DocumentDetailComponent },

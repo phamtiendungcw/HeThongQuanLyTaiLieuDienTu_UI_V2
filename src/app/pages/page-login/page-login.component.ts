@@ -67,7 +67,7 @@ export class PageLoginComponent implements OnInit {
     this.accountService.login(this.model).subscribe({
       next: () => {
         this.accountService.setCurrentUser(this.model);
-        this.router.navigate(['/admin/home']);
+        this.router.navigate(['/edmslab/home']);
         this.toastr.toastrConfig.positionClass = 'toast-bottom-right';
         this.toastr.success('Đăng nhập thành công');
       },

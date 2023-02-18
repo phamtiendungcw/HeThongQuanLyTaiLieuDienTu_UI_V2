@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
   private checkUserLocal() {
     const userLocal = this.accountService.getUserLocal();
     if (userLocal != null) {
-      this.router.navigate(['/admin/home']);
+      this.router.navigate(['/edmslab/home']);
     }
   }
 }

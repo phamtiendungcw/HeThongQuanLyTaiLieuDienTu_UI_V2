@@ -15,6 +15,6 @@ export class PageError500Component {
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
-    this.error = navigation?.extras?.state?.['err'];
+    this.error = navigation?.extras?.state?.['error'];
   }
 }

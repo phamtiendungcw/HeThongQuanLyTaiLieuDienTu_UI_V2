@@ -13,7 +13,7 @@ export class DocumentListComponent {
   crumbs = [
     {
       crumb: 'Tài liệu',
-      router: '/admin/home/documents',
+      router: '/edmslab/home/documents',
     },
   ];
 }

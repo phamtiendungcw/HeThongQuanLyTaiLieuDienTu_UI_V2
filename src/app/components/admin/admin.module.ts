@@ -37,6 +37,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { ThemeModule } from '../../layouts/theme/theme.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { PhotoManagementComponent } from './photo-management/photo-management.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     DocumentEditComponent,
     DocumentCreateComponent,
     DocumentDetailComponent,
+    AdminPanelComponent,
+    UserManagementComponent,
+    PhotoManagementComponent,
   ],
   imports: [
     CommonModule,
@@ -77,6 +84,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
   ],
 })
 export class AdminModule {}

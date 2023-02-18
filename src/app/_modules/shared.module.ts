@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [],
@@ -26,12 +27,14 @@ import { FileUploadModule } from 'ng2-file-upload';
       type: 'square-jelly-box',
     }),
     FileUploadModule,
+    ModalModule.forRoot(),
   ],
   exports: [
     BrowserAnimationsModule,
     ToastrModule,
     NgxSpinnerModule,
     FileUploadModule,
+    ModalModule,
   ],
 })
 export class SharedModule {}

@@ -9,7 +9,7 @@ import { ThemeRoutingModule } from './theme-routing.module';
 import { TextInputComponent } from './text-input/text-input.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { DeleteFormComponent } from './delete-form/delete-form.component';
@@ -17,6 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { HasRoleDirective } from '../../_directives/has-role.directive';
+import { RolesModalComponent } from './roles-modal/roles-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     BreadcrumbComponent,
     DeleteFormComponent,
     PhotoEditorComponent,
+    HasRoleDirective,
+    RolesModalComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +39,13 @@ import { FileUploadModule } from 'ng2-file-upload';
     MatDialogModule,
     MatButtonModule,
     FileUploadModule,
+    FormsModule,
   ],
-  exports: [TextInputComponent, BreadcrumbComponent, PhotoEditorComponent],
+  exports: [
+    TextInputComponent,
+    BreadcrumbComponent,
+    PhotoEditorComponent,
+    HasRoleDirective,
+  ],
 })
 export class ThemeModule {}
