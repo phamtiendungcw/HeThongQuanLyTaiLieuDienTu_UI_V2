@@ -25,7 +25,6 @@ table {
 .member-list {
   background: #ffffff;
 }
-
 .member-list mat-form-field {
   width: 100%;
 }
@@ -56,6 +55,13 @@ table {
   display: flex;
   flex: auto;
   align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
   justify-content: center;
 }
 

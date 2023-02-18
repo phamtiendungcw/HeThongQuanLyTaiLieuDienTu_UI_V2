@@ -29,6 +29,7 @@ export class MemberEditComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     this.getDataEdit();
+    console.log(this.editForm.value);
   }
 
   getDataEdit() {

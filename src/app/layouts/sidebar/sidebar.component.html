@@ -6,9 +6,8 @@
   <ul class="sidebar-nav" id="sidebar-nav">
     <ng-container>
       <li *appHasRole="['Admin','Moderator','Member','Client']" class="nav-item">
-        <a class="nav-link " routerLink="/edmslab/home" routerLinkActive="active">
-          <i class="bi bi-grid"></i>
-          <span>Tổng quan</span>
+        <a class="nav-link " routerLink="/edmslab/home/dashboard" routerLinkActive="active">
+          <i class="bi bi-grid"></i><span>Tổng quan</span>
         </a>
       </li>
       <li class="nav-heading">Chức năng</li>
@@ -17,10 +16,12 @@
           <i class="bi bi-menu-button-wide"></i><span>Tài liệu điện tử</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li><a [routerLink]="['documents']" routerLinkActive="active">
+          <li><a [routerLink]="['TaiLieuGuiDen']" routerLinkActive="active">
             <i class="bi bi-circle"></i><span>Tài liệu đến</span> </a></li>
-          <li><a> <i class="bi bi-circle"></i><span>Tài liệu gửi đi</span> </a></li>
-          <li><a> <i class="bi bi-circle"></i><span>Tài liệu nội bộ</span> </a></li>
+          <li><a [routerLink]="['TaiLieuGuiDi']" routerLinkActive="active">
+            <i class="bi bi-circle"></i><span>Tài liệu gửi đi</span> </a></li>
+          <li><a [routerLink]="['documents']" routerLinkActive="active">
+            <i class="bi bi-circle"></i><span>Tài liệu nội bộ</span> </a></li>
         </ul>
       </li>
       <li *appHasRole="['Admin']" class="nav-item">

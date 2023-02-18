@@ -41,6 +41,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { PhotoManagementComponent } from './photo-management/photo-management.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     AdminPanelComponent,
     UserManagementComponent,
     PhotoManagementComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,

@@ -8,9 +8,6 @@ import { AuthGuard } from 'src/app/router/_guard/auth.guard';
 import { DocumentListComponent } from './document/document-list/document-list.component';
 import { HomeComponent } from './home/home.component';
 import { MemberListComponent } from './member/member-list/member-list.component';
-import { DocumentDetailComponent } from './document/document-detail/document-detail.component';
-import { DocumentEditComponent } from './document/document-edit/document-edit.component';
-import { DocumentCreateComponent } from './document/document-create/document-create.component';
 import { PageError404Component } from '../../pages/errors/page-error404/page-error404.component';
 import { PageLoginComponent } from '../../pages/page-login/page-login.component';
 import { PageRegisterComponent } from '../../pages/page-register/page-register.component';
@@ -18,6 +15,7 @@ import { PageError500Component } from '../../pages/errors/page-error500/page-err
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminGuard } from '../../router/_guard/admin.guard';
 import { MemberGuard } from '../../router/_guard/member.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -27,6 +25,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: HomeComponent,
     children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
       {
         path: 'admin',
         component: AdminPanelComponent,
@@ -38,15 +40,19 @@ const routes: Routes = [
         canActivate: [AdminGuard],
       },
       {
-        path: 'documents',
-        runGuardsAndResolvers: 'always',
-        canActivate: [MemberGuard],
+        path: 'TaiLieuGuiDen',
         component: DocumentListComponent,
-        children: [
-          { path: ':id/view', component: DocumentDetailComponent },
-          { path: ':id/edit', component: DocumentEditComponent },
-          { path: 'create', component: DocumentCreateComponent },
-        ],
+        canActivate: [MemberGuard],
+      },
+      {
+        path: 'TaiLieuGuiDi',
+        component: DocumentListComponent,
+        canActivate: [MemberGuard],
+      },
+      {
+        path: 'documents',
+        component: DocumentListComponent,
+        canActivate: [MemberGuard],
       },
       { path: 'not-found', component: PageError404Component },
       { path: 'server-error', component: PageError500Component },

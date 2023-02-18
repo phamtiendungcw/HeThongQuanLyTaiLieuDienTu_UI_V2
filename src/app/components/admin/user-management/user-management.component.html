@@ -3,18 +3,18 @@
   -->
 
 <div class="row p-5 w-100">
-  <table aria-describedby="Bảng thông tin quyền hạn nhân viên" aria-description="Bảng thông tin quyền hạn nhân viên" class="table">
+  <table aria-describedby="Bảng thông tin quyền hạn nhân viên" class="table">
     <thead>
       <tr>
-        <th class="text-center" style="width: 30%;">Tên tài khoản</th>
-        <th class="text-center" style="width: 40%;">Vai trò người dùng</th>
+        <th style="width: 30%;">Tên tài khoản</th>
+        <th style="width: 40%;">Vai trò người dùng</th>
         <th class="text-center" style="width: 30%;"></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
-        <td class="text-center">{{user.username}}</td>
-        <td class="text-center">{{user.roles}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.roles}}</td>
         <td class="text-center">
           <button (click)="openRolesModal(user)" class="btn btn-info" style="color: white">
             <i class="bi bi-pencil-square"></i>&nbsp;Chỉnh sửa quyền
