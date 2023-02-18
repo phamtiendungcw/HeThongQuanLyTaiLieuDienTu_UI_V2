@@ -27,6 +27,10 @@ export class PageLoginComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     this.getUsers();
+    const navigator = this.accountService.getUserLocal();
+    if (navigator !== null) {
+      this.router.navigate(['edmslab/home/dashboard']);
+    }
   }
 
   initializeForm() {
