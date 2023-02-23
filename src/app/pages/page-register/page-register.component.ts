@@ -63,7 +63,7 @@ export class PageRegisterComponent implements OnInit {
     this.accountService.register(this.registerForm.value).subscribe({
       next: () => {
         this.toastr.success('Đăng ký tài khoản thành công');
-        this.router.navigate(['/admin/home']);
+        this.router.navigate(['/edmslab/home']);
       },
       error: (error) => {
         this.validationErrors = error;

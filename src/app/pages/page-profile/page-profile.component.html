@@ -5,7 +5,7 @@
 <div *ngIf="user" class="container-profile pt-3">
   <div class="container card p-5 mat-elevation-z4">
     <div class="d-flex align-items-center justify-content-start">
-      <button [routerLink]="['/admin/home']" class="btn btn-secondary">
+      <button [routerLink]="['/edmslab/home/dashboard']" class="btn btn-secondary">
         <i class="bi bi-caret-left"></i>&nbsp;Quay trở về trang chủ
       </button>
     </div>
@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-xl-4">
           <div class="card">
-            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+            <div *ngIf="member" class="card-body profile-card pt-4 d-flex flex-column align-items-center">
               <img alt="Profile" class="rounded-circle mb-3 img-profile" src="{{member.photoUrl || 'assets/images/user.png'}}">
               <h2 class="fs-2 fw-bold">{{member.hoVaTen | titlecase}}</h2>
               <h3 class="fw-light fs-5">@{{member.userName}}</h3>

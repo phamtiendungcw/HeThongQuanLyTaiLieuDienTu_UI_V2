@@ -19,12 +19,6 @@ const routes: Routes = [
       { path: 'register', component: PageRegisterComponent },
       { path: 'login', component: PageLoginComponent },
       {
-        path: 'profile',
-        component: PageProfileComponent,
-        canActivate: [AuthGuard],
-        canDeactivate: [PreventUnsavedChangesGuard],
-      },
-      {
         path: 'profile/:username',
         component: PageProfileComponent,
         canActivate: [AuthGuard],

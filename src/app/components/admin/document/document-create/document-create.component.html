@@ -1,1 +1,17 @@
-<p>document-create works!</p>
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+
+<h1 mat-dialog-title>Tạo tài liệu</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <input [(ngModel)]="name" matInput placeholder="Nhập tên tệp">
+    </mat-form-field>
+    <input (change)="onFileChange($event)" type="file">
+  </form>
+</div>
+<div class="d-flex justify-content-end" mat-dialog-actions>
+  <button (click)="createDocument()" class="btn btn-primary" mat-button>Tạo</button>
+  <button (click)="closeDialog()" mat-button>Huỷ</button>
+</div>

@@ -27,6 +27,10 @@ export class PageLoginComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     this.getUsers();
+    const navigator = this.accountService.getUserLocal();
+    if (navigator !== null) {
+      this.router.navigate(['edmslab/home/dashboard']);
+    }
   }
 
   initializeForm() {
@@ -67,7 +71,7 @@ export class PageLoginComponent implements OnInit {
     this.accountService.login(this.model).subscribe({
       next: () => {
         this.accountService.setCurrentUser(this.model);
-        this.router.navigate(['/admin/home']);
+        this.router.navigate(['/edmslab/home/dashboard']);
         this.toastr.toastrConfig.positionClass = 'toast-bottom-right';
         this.toastr.success('Đăng nhập thành công');
       },

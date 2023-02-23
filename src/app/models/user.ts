@@ -7,4 +7,5 @@ export interface User {
   token: string;
   hovaten: string;
   photoUrl: string;
+  roles: string[];
 }

@@ -5,10 +5,9 @@
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
     <ng-container>
-      <li class="nav-item">
-        <a class="nav-link " routerLink="/admin/home" routerLinkActive="active">
-          <i class="bi bi-grid"></i>
-          <span>Tổng quan</span>
+      <li *appHasRole="['Admin','Moderator','Member','Client']" class="nav-item">
+        <a class="nav-link " routerLink="/edmslab/home/dashboard" routerLinkActive="active">
+          <i class="bi bi-grid"></i><span>Tổng quan</span>
         </a>
       </li>
       <li class="nav-heading">Chức năng</li>
@@ -17,16 +16,28 @@
           <i class="bi bi-menu-button-wide"></i><span>Tài liệu điện tử</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li><a [routerLink]="['documents']" routerLinkActive="active">
-            <i class="bi bi-circle"></i><span>Tài liệu đến</span> </a></li>
-          <li><a> <i class="bi bi-circle"></i><span>Tài liệu gửi đi</span> </a></li>
-          <li><a> <i class="bi bi-circle"></i><span>Tài liệu nội bộ</span> </a></li>
+          <li>
+            <a [routerLink]="['TaiLieuGuiDi']" routerLinkActive="active">
+              <i class="bi bi-circle"></i><span>Tài liệu</span>
+            </a>
+          </li>
+          <li *appHasRole="['Admin','Moderator','Member','Client']">
+            <a [routerLink]="['documents']" routerLinkActive="active">
+              <i class="bi bi-circle"></i><span>Tài liệu nội bộ</span>
+            </a>
+          </li>
         </ul>
       </li>
-      <li class="nav-item">
+      <li *appHasRole="['Admin']" class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" [routerLink]="['members']" routerLinkActive="active">
           <i class="bi bi-person-vcard"></i>
           <span>Quản lý tài khoản nhân viên</span>
+        </a>
+      </li>
+      <li *appHasRole="['Admin','Moderator']" class="nav-item">
+        <a [routerLink]="['admin']" class="nav-link collapsed" data-bs-target="#icons-nav" routerLinkActive="active">
+          <i class="bi bi-person-lock"></i>
+          <span>Quản trị viên</span>
         </a>
       </li>
       <li class="nav-heading">Truy cập trang</li>

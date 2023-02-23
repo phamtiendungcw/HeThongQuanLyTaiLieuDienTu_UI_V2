@@ -14,7 +14,7 @@ const routes: Routes = [
       import('./pages/pages.module').then((m) => m.PagesModule),
   },
   {
-    path: 'admin',
+    path: 'edmslab',
     loadChildren: () =>
       import('./components/admin/admin.module').then((m) => m.AdminModule),
   },

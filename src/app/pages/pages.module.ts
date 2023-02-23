@@ -17,6 +17,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { PagesComponent } from './pages.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     PageProfileComponent,
     PageError404Component,
     PageError500Component,
+    PagesComponent,
   ],
   imports: [
     CommonModule,

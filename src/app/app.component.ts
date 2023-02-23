@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.setCurrentUser();
-    this.checkUserLocal();
+    // this.checkUserLocal();
   }
 
   setCurrentUser() {
@@ -29,10 +29,10 @@ export class AppComponent implements OnInit {
     this.accountService.setCurrentUser(user);
   }
 
-  private checkUserLocal() {
-    const userLocal = this.accountService.getUserLocal();
-    if (userLocal != null) {
-      this.router.navigate(['/admin/home']);
-    }
-  }
+  // private checkUserLocal() {
+  //   const userLocal = this.accountService.getUserLocal();
+  //   if (userLocal === null) {
+  //     this.router.navigate(['/account/login']);
+  //   }
+  // }
 }

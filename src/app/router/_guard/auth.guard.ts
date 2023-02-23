@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate {
               positionClass: 'toast-top-right',
             }
           );
-          this.router.navigate(['account/login']);
+          this.router.navigate(['/account/login']);
           return false;
         }
       })

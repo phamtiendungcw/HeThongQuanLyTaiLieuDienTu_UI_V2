@@ -23,12 +23,13 @@ export class MemberListComponent implements OnInit {
   crumbs = [
     {
       crumb: 'Nhân viên',
-      router: '/admin/home/members',
+      router: '/edmslab/home/members',
     },
   ];
   displayedColumns: string[] = [
     'id',
     'userName',
+    'photoUrl',
     'email',
     'hoVaTen',
     'ngayThangNamSinh',
@@ -104,6 +105,7 @@ export class MemberListComponent implements OnInit {
           this.getMembers();
         }
       });
+    console.log(element);
   }
 
   openAddForm() {

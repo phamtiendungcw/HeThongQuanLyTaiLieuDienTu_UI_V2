@@ -1,0 +1,19 @@
+<!--
+  ~ Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
+  -->
+
+<div class="page-title">
+  <h1>Trang dành cho người quản trị</h1>
+  <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
+</div>
+
+<div class="card">
+  <mat-tab-group animationDuration="0ms" class="mat-elevation-z4">
+    <mat-tab *appHasRole='["Admin"]' label="Quản lý người dùng">
+      <app-user-management></app-user-management>
+    </mat-tab>
+    <mat-tab *appHasRole='["Admin", "Moderator"]' label="Quản lý ảnh">
+      <app-photo-management></app-photo-management>
+    </mat-tab>
+  </mat-tab-group>
+</div>

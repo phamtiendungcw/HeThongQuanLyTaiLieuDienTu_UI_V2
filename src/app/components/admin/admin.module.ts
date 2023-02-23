@@ -16,9 +16,7 @@ import { MemberDetailComponent } from './member/member-detail/member-detail.comp
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
 import { MemberListComponent } from './member/member-list/member-list.component';
 import { DocumentListComponent } from './document/document-list/document-list.component';
-import { DocumentEditComponent } from './document/document-edit/document-edit.component';
 import { DocumentCreateComponent } from './document/document-create/document-create.component';
-import { DocumentDetailComponent } from './document/document-detail/document-detail.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -37,6 +35,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { ThemeModule } from '../../layouts/theme/theme.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { PhotoManagementComponent } from './photo-management/photo-management.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SafePipeDirectiveDirective } from '../../_directives/safe-pipe-directive.directive';
 
 @NgModule({
   declarations: [
@@ -44,14 +48,17 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
+    SafePipeDirectiveDirective,
     MemberCreateComponent,
     MemberDetailComponent,
     MemberEditComponent,
     MemberListComponent,
     DocumentListComponent,
-    DocumentEditComponent,
     DocumentCreateComponent,
-    DocumentDetailComponent,
+    AdminPanelComponent,
+    UserManagementComponent,
+    PhotoManagementComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -77,6 +84,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
   ],
 })
 export class AdminModule {}

@@ -6,3 +6,52 @@
   <h1>Quản lý tài liệu</h1>
   <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
 </div>
+
+<div class="d-flex mb-2 justify-content-between align-items-center">
+  <div class="search rounded-5 border px-4 align-items-center">
+    <mat-icon class="text-secondary">search</mat-icon>
+    <input (keyup)="applyFilter($event)" class="px-2 py-2 border-0 w-auto bg-transparent" matInput placeholder="Nhập tên file hoặc kiểu file cần tìm..." type="search">
+  </div>
+  <button (click)="openCreateDialog()" *appHasRole="['Admin','Moderator','Member']" color="primary" mat-raised-button>
+    <i class="bi bi-plus"></i>&nbsp;Thêm mới tài liệu
+  </button>
+</div>
+<div class="document-list">
+  <div class="mat-elevation-z8">
+    <table [dataSource]="dataSource" aria-describedby="Bảng nhân viên" mat-table matSort>
+
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> ID</th>
+        <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên tệp</th>
+        <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="contentType">
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Loại tệp</th>
+        <td *matCellDef="let element" mat-cell> {{element.contentType}} </td>
+      </ng-container>
+      <ng-container matColumnDef="createdAt">
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Ngày tạo</th>
+        <td *matCellDef="let element" mat-cell> {{element.createdAt | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hanhDong">
+        <th *matHeaderCellDef class="text-center" mat-header-cell> Hành động</th>
+        <td *matCellDef="let element" class="btn-action" mat-cell>
+          <button (click)="downloadDocument(element.id, element.name)" class="btn btn-outline-success me-2">
+            <i class="bi bi-download"></i>&nbsp;Tải về
+          </button>
+          <button (click)="openConfirmDeleteDialog(element.id)" *appHasRole="['Admin','Moderator','Member']" class="btn btn-danger">
+            <i class="bi bi-trash"></i>&nbsp;Xoá
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+    <mat-paginator [length]="100" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" aria-label="Chọn trang" class="mt-2 mb-2" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
