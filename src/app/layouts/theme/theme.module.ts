@@ -19,6 +19,7 @@ import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { HasRoleDirective } from '../../_directives/has-role.directive';
 import { RolesModalComponent } from './roles-modal/roles-modal.component';
+import { DocumentDeleteComponent } from './document-delete/document-delete.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RolesModalComponent } from './roles-modal/roles-modal.component';
     PhotoEditorComponent,
     HasRoleDirective,
     RolesModalComponent,
+    DocumentDeleteComponent,
   ],
   imports: [
     CommonModule,

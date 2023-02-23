@@ -24,7 +24,8 @@ export class MemberGuard implements CanActivate {
         if (
           user.roles.includes('Admin') ||
           user.roles.includes('Moderator') ||
-          user.roles.includes('Member')
+          user.roles.includes('Member') ||
+          user.roles.includes('Client')
         ) {
           return true;
         } else {

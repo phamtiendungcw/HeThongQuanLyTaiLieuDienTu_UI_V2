@@ -25,6 +25,7 @@ table {
 .member-list {
   background: #ffffff;
 }
+
 .member-list mat-form-field {
   width: 100%;
 }

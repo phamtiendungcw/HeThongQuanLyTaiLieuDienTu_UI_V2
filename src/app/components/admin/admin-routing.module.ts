@@ -16,6 +16,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminGuard } from '../../router/_guard/admin.guard';
 import { MemberGuard } from '../../router/_guard/member.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DocumentCreateComponent } from './document/document-create/document-create.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -40,11 +41,6 @@ const routes: Routes = [
         canActivate: [AdminGuard],
       },
       {
-        path: 'TaiLieuGuiDen',
-        component: DocumentListComponent,
-        canActivate: [MemberGuard],
-      },
-      {
         path: 'TaiLieuGuiDi',
         component: DocumentListComponent,
         canActivate: [MemberGuard],
@@ -52,6 +48,11 @@ const routes: Routes = [
       {
         path: 'documents',
         component: DocumentListComponent,
+        canActivate: [MemberGuard],
+      },
+      {
+        path: 'documents/create',
+        component: DocumentCreateComponent,
         canActivate: [MemberGuard],
       },
       { path: 'not-found', component: PageError404Component },

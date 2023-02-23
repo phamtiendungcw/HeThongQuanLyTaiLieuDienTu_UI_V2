@@ -16,9 +16,7 @@ import { MemberDetailComponent } from './member/member-detail/member-detail.comp
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
 import { MemberListComponent } from './member/member-list/member-list.component';
 import { DocumentListComponent } from './document/document-list/document-list.component';
-import { DocumentEditComponent } from './document/document-edit/document-edit.component';
 import { DocumentCreateComponent } from './document/document-create/document-create.component';
-import { DocumentDetailComponent } from './document/document-detail/document-detail.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -42,6 +40,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { PhotoManagementComponent } from './photo-management/photo-management.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SafePipeDirectiveDirective } from '../../_directives/safe-pipe-directive.directive';
 
 @NgModule({
   declarations: [
@@ -49,14 +48,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
+    SafePipeDirectiveDirective,
     MemberCreateComponent,
     MemberDetailComponent,
     MemberEditComponent,
     MemberListComponent,
     DocumentListComponent,
-    DocumentEditComponent,
     DocumentCreateComponent,
-    DocumentDetailComponent,
     AdminPanelComponent,
     UserManagementComponent,
     PhotoManagementComponent,
