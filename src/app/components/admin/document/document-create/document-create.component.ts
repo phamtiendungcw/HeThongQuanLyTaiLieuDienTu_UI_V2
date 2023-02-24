@@ -34,7 +34,7 @@ export class DocumentCreateComponent {
 
   createDocument() {
     const formData = new FormData();
-    formData.append('Name', this.name);
+    formData.append('Name', this.file.name);
     formData.append('File', this.file);
 
     this.documentService.createDocument(formData).subscribe(() => {
