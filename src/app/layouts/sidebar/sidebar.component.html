@@ -17,13 +17,8 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a [routerLink]="['TaiLieuGuiDi']" routerLinkActive="active">
-              <i class="bi bi-circle"></i><span>Tài liệu</span>
-            </a>
-          </li>
-          <li *appHasRole="['Admin','Moderator','Member','Client']">
             <a [routerLink]="['documents']" routerLinkActive="active">
-              <i class="bi bi-circle"></i><span>Tài liệu nội bộ</span>
+              <i class="bi bi-circle"></i><span>Tài liệu</span>
             </a>
           </li>
         </ul>
