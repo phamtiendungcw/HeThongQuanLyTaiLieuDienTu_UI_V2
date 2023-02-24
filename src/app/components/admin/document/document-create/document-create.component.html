@@ -5,10 +5,10 @@
 <h1 mat-dialog-title>Tạo tài liệu</h1>
 <div mat-dialog-content>
   <form #documentForm="ngForm">
-    <mat-form-field>
+    <mat-form-field class="mb-3 mt-1">
       <input [(ngModel)]="title" matInput name="title" placeholder="Nhập tiêu đề tài liệu" required>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="mb-3">
       <input [(ngModel)]="description" matInput name="description" placeholder="Nhập nôi dung mô tả tài liệu" required>
     </mat-form-field>
     <input (change)="onFileChange($event)" name="file" type="file">

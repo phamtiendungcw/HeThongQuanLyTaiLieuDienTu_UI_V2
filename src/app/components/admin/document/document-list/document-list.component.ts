@@ -77,7 +77,7 @@ export class DocumentListComponent implements OnInit {
 
   getDocumentUrl(id: number): any {
     return this.sanitizer.bypassSecurityTrustUrl(
-      `https://localhost:5001/api/documents/${id}/download`
+      `https://localhost:5001/edmslab/api/document/${id}/download`
     );
   }
 
@@ -95,14 +95,15 @@ export class DocumentListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
-        this.deleteDocument();
+        this.deleteDocument(id);
       }
     });
   }
 
-  deleteDocument(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!;
-    this.documentService.deleteDocument(id).subscribe(() => this.goBack());
+  deleteDocument(id: number): void {
+    this.documentService
+        .deleteDocument(id)
+        .subscribe(() => this.loadDocuments());
   }
 
   applyFilter(event: Event) {
