@@ -24,8 +24,16 @@
         <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> ID</th>
         <td *matCellDef="let element" mat-cell> {{element.id}} </td>
       </ng-container>
+      <ng-container matColumnDef="title">
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên tài liệu</th>
+        <td *matCellDef="let element" mat-cell> {{element.title}} </td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Mô tả tài liệu</th>
+        <td *matCellDef="let element" mat-cell> {{element.description}} </td>
+      </ng-container>
       <ng-container matColumnDef="name">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên tệp</th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên file</th>
         <td *matCellDef="let element" mat-cell> {{element.name}} </td>
       </ng-container>
       <ng-container matColumnDef="contentType">

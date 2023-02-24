@@ -30,6 +30,8 @@ export class DocumentListComponent implements OnInit {
 
   displayedColumns: string[] = [
     'id',
+    'title',
+    'description',
     'name',
     'contentType',
     'createdAt',

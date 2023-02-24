@@ -7,9 +7,10 @@ import { DocumentService } from '../../../../service/document.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
 export interface DocumentCreateRequest {
-  name: string;
+  title: string;
   description: string;
-  file: File | null;
+  name: string;
+  file: File;
 }
 
 @Component({
@@ -18,7 +19,8 @@ export interface DocumentCreateRequest {
   styleUrls: ['./document-create.component.scss'],
 })
 export class DocumentCreateComponent {
-  name!: string;
+  title!: string;
+  description!: string;
   file!: File;
 
   constructor(
@@ -34,8 +36,10 @@ export class DocumentCreateComponent {
 
   createDocument() {
     const formData = new FormData();
-    formData.append('Name', this.file.name);
-    formData.append('File', this.file);
+    formData.append('title', this.title);
+    formData.append('description', this.description);
+    formData.append('name', this.file.name);
+    formData.append('file', this.file);
 
     this.documentService.createDocument(formData).subscribe(() => {
       this.dialogRef.close(true);
