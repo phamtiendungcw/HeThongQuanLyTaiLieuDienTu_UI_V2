@@ -4,8 +4,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AccountService } from '../../../../service/account.service';
-import { Router } from '@angular/router';
 import { MemberService } from '../../../../service/member.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -22,9 +20,7 @@ export class MemberCreateComponent implements OnInit {
   minDate = new Date(1950, 1, 1);
 
   constructor(
-    private accountService: AccountService,
     private memberService: MemberService,
-    private router: Router,
     private toastr: ToastrService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<MemberCreateComponent>

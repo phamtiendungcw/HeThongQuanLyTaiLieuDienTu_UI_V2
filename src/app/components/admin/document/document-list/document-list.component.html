@@ -8,9 +8,9 @@
 </div>
 
 <div class="d-flex mb-2 justify-content-between align-items-center">
-  <div class="search rounded-5 border px-4 align-items-center" style="min-width: 200px">
+  <div class="search rounded-5 border px-4 align-items-center">
     <mat-icon class="text-secondary">search</mat-icon>
-    <input (keyup)="applyFilter($event)" class="px-2 py-2 border-0 w-auto bg-transparent w-100" matInput placeholder="Nhập nội dung cần tìm..." type="search">
+    <input (keyup)="applyFilter($event)" class="px-2 py-2 border-0 w-auto bg-transparent" matInput placeholder="Nhập nội dung cần tìm..." type="search">
   </div>
   <button (click)="openCreateDialog()" *appHasRole="['Admin','Moderator','Member']" color="primary" mat-raised-button>
     <i class="bi bi-plus"></i>&nbsp;Thêm mới tài liệu
@@ -47,7 +47,7 @@
 
       <ng-container matColumnDef="hanhDong">
         <th *matHeaderCellDef class="text-center" mat-header-cell> Hành động</th>
-        <td *matCellDef="let element" class="btn-action" mat-cell>
+        <td *matCellDef="let element" class="btn-action text-center" mat-cell>
           <button (click)="downloadDocument(element.id, element.name)" class="btn btn-outline-success me-2">
             <i class="bi bi-download"></i>&nbsp;Tải về
           </button>

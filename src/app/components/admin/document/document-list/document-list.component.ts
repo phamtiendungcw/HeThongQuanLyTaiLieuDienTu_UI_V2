@@ -9,7 +9,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
 import * as saveAs from 'file-saver';
 import { ToastrService } from 'ngx-toastr';
 import { DocumentDeleteComponent } from '../../../../layouts/theme/document-delete/document-delete.component';
@@ -47,7 +46,6 @@ export class DocumentListComponent implements OnInit {
     private documentService: DocumentService,
     private dialog: MatDialog,
     private sanitizer: DomSanitizer,
-    private route: ActivatedRoute,
     private location: Location,
     private toastr: ToastrService
   ) {}
