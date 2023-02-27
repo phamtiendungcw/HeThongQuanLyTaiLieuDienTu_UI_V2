@@ -2,18 +2,19 @@
  * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
  */
 
+import { Location } from '@angular/common';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { DocumentService } from '../../../../service/document.service';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
-import * as saveAs from 'file-saver';
-import { DocumentCreateComponent } from '../document-create/document-create.component';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { DocumentDeleteComponent } from '../../../../layouts/theme/document-delete/document-delete.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import * as saveAs from 'file-saver';
+import { ToastrService } from 'ngx-toastr';
+import { DocumentDeleteComponent } from '../../../../layouts/theme/document-delete/document-delete.component';
+import { DocumentService } from '../../../../service/document.service';
+import { DocumentCreateComponent } from '../document-create/document-create.component';
 
 @Component({
   selector: 'app-document-list',
@@ -47,7 +48,8 @@ export class DocumentListComponent implements OnInit {
     private dialog: MatDialog,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +73,7 @@ export class DocumentListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.loadDocuments();
+        this.toastr.success('Thêm tài liệu thành công');
       }
     });
   }
@@ -96,14 +99,15 @@ export class DocumentListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
         this.deleteDocument(id);
+        this.toastr.success('Xoá tài liệu thành công');
       }
     });
   }
 
   deleteDocument(id: number): void {
     this.documentService
-        .deleteDocument(id)
-        .subscribe(() => this.loadDocuments());
+      .deleteDocument(id)
+      .subscribe(() => this.loadDocuments());
   }
 
   applyFilter(event: Event) {
