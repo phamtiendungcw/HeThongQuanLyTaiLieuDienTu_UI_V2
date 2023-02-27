@@ -2,10 +2,16 @@
  * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
  */
 
-import { Directive, Input, OnInit, TemplateRef, ViewContainerRef, } from '@angular/core';
+import {
+  Directive,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
+import { take } from 'rxjs';
 import { User } from '../models/user';
 import { AccountService } from '../service/account.service';
-import { take } from 'rxjs';
 
 @Directive({
   selector: '[appHasRole]', // *appHasRole='["Quản trị viên", ...]'
@@ -19,7 +25,7 @@ export class HasRoleDirective implements OnInit {
     private templateRef: TemplateRef<any>,
     private accountService: AccountService
   ) {
-    accountService.currentUser$.pipe(take(1)).subscribe({
+    this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: (user) => {
         if (user) this.user = user;
       },
