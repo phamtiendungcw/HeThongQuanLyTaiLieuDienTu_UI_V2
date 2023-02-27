@@ -112,9 +112,15 @@
                     </div>
                     <h5 class="card-title fs-5 fw-bold">Chỉnh sửa thông tin người dùng</h5>
                     <div class="row mb-3">
+                      <label class="col-md-4 col-lg-3 col-form-label" for="userName">Tài khoản</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input [(ngModel)]="member.userName" class="form-control" id="userName" name="userName" readonly type="text">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Họ và tên</label>
                       <div class="col-md-8 col-lg-9">
-                        <input [(ngModel)]="member.hoVaTen" class="form-control" id="fullName" name="hoVaTen" type="text">
+                        <input [(ngModel)]="member.hoVaTen" class="form-control" id="fullName" name="hoVaTen" required type="text">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -137,13 +143,13 @@
                     <div class="row mb-3">
                       <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input [(ngModel)]="member.email" class="form-control" id="email" name="email" type="text">
+                        <input [(ngModel)]="member.email" class="form-control" id="email" name="email" required type="text">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label class="col-md-4 col-lg-3 col-form-label">Giới tính:</label>
                       <div class="col-md-8 col-lg-9 d-flex align-items-center">
-                        <mat-radio-group [(ngModel)]="member.gioiTinh" name="gioiTinh">
+                        <mat-radio-group [(ngModel)]="member.gioiTinh" name="gioiTinh" required>
                           <mat-radio-button [value]="true" class="me-3" color="primary">Nam</mat-radio-button>
                           <mat-radio-button [value]="false" color="primary">Nữ</mat-radio-button>
                         </mat-radio-group>
@@ -152,7 +158,7 @@
                     <div class="row mb-3">
                       <label for="SoCMND" class="col-md-4 col-lg-3 col-form-label">Số CMND</label>
                       <div class="col-md-8 col-lg-9">
-                        <input [(ngModel)]="member.soCMND" class="form-control" id="SoCMND" name="soCMND" type="text">
+                        <input [(ngModel)]="member.soCMND" class="form-control" id="SoCMND" name="soCMND" readonly required type="text">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -160,7 +166,7 @@
                       <div class="col-md-8 col-lg-9">
                         <mat-form-field appearance="fill" class="w-100">
                           <mat-label>Lựa chọn một ngày:</mat-label>
-                          <input [(ngModel)]="member.ngayCapCMND" [matDatepicker]="pickerNgayCapCMND" id="NgayCapCMND" matInput name="ngayCapCMND">
+                          <input [(ngModel)]="member.ngayCapCMND" [matDatepicker]="pickerNgayCapCMND" id="NgayCapCMND" matInput name="ngayCapCMND" required>
                           <mat-datepicker-toggle [for]="pickerNgayCapCMND" matSuffix></mat-datepicker-toggle>
                           <mat-datepicker #pickerNgayCapCMND></mat-datepicker>
                         </mat-form-field>
@@ -175,7 +181,7 @@
                     <div class="row mb-3">
                       <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Điện thoại</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="phone" [(ngModel)]="member.phone" type="text" class="form-control" id="Phone">
+                        <input [(ngModel)]="member.phone" class="form-control" id="Phone" name="phone" required type="text">
                       </div>
                     </div>
                     <div class="text-center">

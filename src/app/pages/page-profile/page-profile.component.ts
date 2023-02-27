@@ -61,6 +61,7 @@ export class PageProfileComponent implements OnInit {
         this.member = this.editForm.value;
         this.toastr.success('Thông tin người dùng đã được cập nhật thành công');
         this.editForm?.reset(this.member);
+        this.loadMember();
       },
       error: (err) => console.log(err),
     });
