@@ -58,17 +58,17 @@ export class MemberCreateComponent implements OnInit {
   addMember() {
     if (this.createForm.valid) {
       this.setGioiTinh();
-      this.memberService.addMembers(this.createForm.value).subscribe({
-        next: () => {
-          this.toastr.success('Thêm mới nhân viên thành công');
-          this.revertGioiTinh();
-          this.createForm.reset();
-          this.dialogRef.close('add');
-        },
-        error: (err) =>
-          this.toastr.error('Không thể thêm dữ liệu' + err, 'Đã có lỗi xảy ra'),
-      });
     }
+    this.memberService.addMembers(this.createForm.value).subscribe({
+      next: () => {
+        this.toastr.success('Thêm mới nhân viên thành công');
+        this.revertGioiTinh();
+        this.createForm.reset();
+        this.dialogRef.close(true);
+      },
+      error: (err) =>
+        this.toastr.error('Không thể thêm dữ liệu' + err, 'Đã có lỗi xảy ra'),
+    });
   }
 
   setGioiTinh() {

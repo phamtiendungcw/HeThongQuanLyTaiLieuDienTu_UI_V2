@@ -6,8 +6,7 @@
   <label class="form-label">{{label}}</label>
   <div class="input-group has-validation" *ngIf="label=='Tên đăng nhập'">
     <span class="input-group-text" id="inputGroupPrepend">@</span>
-    <input [class.is-invalid]="(control.touched||control.dirty)&&control.invalid" type="{{type}}" class="form-control"
-           [formControl]="control" placeholder="Nhập {{label|lowercase}}">
+    <input [class.is-invalid]="(control.touched||control.dirty)&&control.invalid" type="{{type}}" class="form-control" [formControl]="control" placeholder="Nhập {{label|lowercase}}">
     <div *ngIf="control.errors?.['required']" class="invalid-feedback">
       Mục {{label|lowercase}} bắt buộc phải có giá trị
     </div>
@@ -15,13 +14,7 @@
       {{label}} đã đạt tối đa ký tự cho phép {{control.errors?.['maxlength[`requiredLength`]']}}
     </div>
   </div>
-  <input
-    [class.is-invalid]="(control.touched || control.dirty) && control.invalid"
-    type="{{type}}"
-    class="form-control"
-    [formControl]="control"
-    placeholder="Nhập {{label | lowercase}}"
-    *ngIf="label!='Tên đăng nhập'">
+  <input [class.is-invalid]="(control.touched || control.dirty) && control.invalid" type="{{type}}" class="form-control" [formControl]="control" placeholder="Nhập {{label | lowercase}}" *ngIf="label!='Tên đăng nhập'">
   <div *ngIf="control.errors?.['required']" class="invalid-feedback">
     Mục {{label|lowercase}} bắt buộc phải có giá trị
   </div>
