@@ -20,3 +20,12 @@ table {
   flex: auto;
   background-color: #fff;
 }
+
+th,
+td {
+  border-right: 1px solid whitesmoke;
+}
+
+th {
+  font-weight: bold;
+}

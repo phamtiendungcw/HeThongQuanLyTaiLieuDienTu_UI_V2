@@ -19,34 +19,38 @@
 <div class="document-list">
   <div class="mat-elevation-z8">
     <table [dataSource]="dataSource" aria-describedby="Bảng nhân viên" mat-table matSort>
-
       <ng-container matColumnDef="id">
         <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> ID</th>
         <td *matCellDef="let element" mat-cell> {{element.id}} </td>
       </ng-container>
+
       <ng-container matColumnDef="title">
         <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên tài liệu</th>
         <td *matCellDef="let element" mat-cell> {{element.title}} </td>
       </ng-container>
+
       <ng-container matColumnDef="description">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Mô tả tài liệu</th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Mô tả tài liệu </th>
         <td *matCellDef="let element" mat-cell> {{element.description}} </td>
       </ng-container>
+
       <ng-container matColumnDef="name">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên file</th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên file </th>
         <td *matCellDef="let element" mat-cell> {{element.name}} </td>
       </ng-container>
+
       <ng-container matColumnDef="contentType">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Loại tệp</th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Loại tệp </th>
         <td *matCellDef="let element" mat-cell> {{element.contentType}} </td>
       </ng-container>
+
       <ng-container matColumnDef="createdAt">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Ngày tạo</th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Ngày tạo </th>
         <td *matCellDef="let element" mat-cell> {{element.createdAt | date:'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="hanhDong">
-        <th *matHeaderCellDef class="text-center" mat-header-cell> Hành động</th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell> Hành động </th>
         <td *matCellDef="let element" class="btn-action text-center" mat-cell>
           <button (click)="downloadDocument(element.id, element.name)" class="btn btn-outline-success me-2">
             <i class="bi bi-download"></i>&nbsp;Tải về
@@ -60,6 +64,6 @@
       <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
       <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
     </table>
-    <mat-paginator [length]="100" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" aria-label="Chọn trang" class="mt-2 mb-2" showFirstLastButtons></mat-paginator>
+    <mat-paginator [length]="100" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" aria-label="Chọn trang" showFirstLastButtons></mat-paginator>
   </div>
 </div>

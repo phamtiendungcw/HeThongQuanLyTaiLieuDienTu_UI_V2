@@ -23,43 +23,42 @@
 </div>
 
 <div class="member-list">
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8 table-responsive">
     <table mat-table [dataSource]="dataSource" matSort aria-describedby="Bảng nhân viên">
-
       <ng-container matColumnDef="id">
-        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
 
       <ng-container matColumnDef="userName">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên tài khoản</th>
+        <th class="text-center" *matHeaderCellDef mat-header-cell mat-sort-header>Tên tài khoản</th>
         <td *matCellDef="let element" mat-cell> {{element.userName | lowercase}} </td>
       </ng-container>
 
       <ng-container matColumnDef="photoUrl">
-        <th *matHeaderCellDef mat-header-cell>Ảnh dại diện</th>
-        <td *matCellDef="let element" class="w-8 min-w-8 pr-0" mat-cell>
-          <img alt="Loading error" class="avatar h-8 w-8 align-middle" src="{{element.photoUrl || './assets/images/user.png'}}">
+        <th class="text-center" *matHeaderCellDef mat-header-cell>Ảnh dại diện</th>
+        <td class="text-center w-8 min-w-8 pr-0" *matCellDef="let element" mat-cell>
+          <img mat-card-avatar alt="Loading error" class="avatar h-8 w-8 align-middle" src="{{element.photoUrl || './assets/images/user.png'}}">
         </td>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>
+        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
         <td mat-cell *matCellDef="let element"> {{element.email}} </td>
       </ng-container>
 
       <ng-container matColumnDef="hoVaTen">
-        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> Họ và tên</th>
+        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Họ và tên</th>
         <td *matCellDef="let element" mat-cell> {{element.hoVaTen | titlecase}} </td>
       </ng-container>
 
       <ng-container matColumnDef="ngayThangNamSinh">
-        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> Ngày sinh</th>
+        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Ngày sinh</th>
         <td mat-cell *matCellDef="let element"> {{element.ngayThangNamSinh | date:'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="gioiTinh">
-        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> Giới tính</th>
+        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Giới tính</th>
         <td mat-cell *matCellDef="let element">
           <span *ngIf="element.gioiTinh">Nam</span>
           <span *ngIf="!element.gioiTinh">Nữ</span>
@@ -67,12 +66,12 @@
       </ng-container>
 
       <ng-container matColumnDef="phone">
-        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> Điện thoại</th>
+        <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Điện thoại</th>
         <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
       </ng-container>
 
       <ng-container matColumnDef="soCMND">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Số CMND</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Số CMND</th>
         <td mat-cell *matCellDef="let element"> {{element.soCMND}} </td>
       </ng-container>
 
@@ -95,6 +94,6 @@
       <tr (click)="openDetailForm(row)" *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
     </table>
 
-    <mat-paginator class="mt-2 mb-2" showFirstLastButtons [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Chọn trang"></mat-paginator>
+    <mat-paginator showFirstLastButtons [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Chọn trang" aria-describedby="Phân trang"></mat-paginator>
   </div>
 </div>
