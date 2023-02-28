@@ -79,13 +79,13 @@
       <ng-container matColumnDef="hanhDong">
         <th class="text-center" mat-header-cell *matHeaderCellDef> Hành động</th>
         <td class="btn-action" mat-cell *matCellDef="let element">
-          <button (click)="openDetailForm(element)" class="btn btn-secondary me-2">
+          <button (click)="openDetailForm(element)" class="btn btn-outline-secondary me-2">
             <i class="bi bi-file-earmark-person"></i>&nbsp;Chi tiết
           </button>
-          <button (click)="openEditForm(element)" class="btn btn-primary me-2">
+          <button (click)="openEditForm(element)" class="btn btn-outline-primary me-2">
             <i class="bi bi-pencil-square"></i>&nbsp;Chỉnh sửa
           </button>
-          <button class="btn btn-danger" (click)="deleteMember(element.userName)">
+          <button class="btn btn-outline-danger" (click)="deleteMember(element.userName)">
             <i class="bi bi-trash"></i>&nbsp;Xoá
           </button>
         </td>
