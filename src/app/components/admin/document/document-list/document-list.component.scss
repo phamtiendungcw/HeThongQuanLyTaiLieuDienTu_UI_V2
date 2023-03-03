@@ -6,6 +6,15 @@ table {
   width: 100%;
 }
 
+th,
+td {
+  border-right: 1px solid whitesmoke;
+}
+
+th {
+  font-weight: bold;
+}
+
 .document-list {
   background: #ffffff;
 
@@ -21,11 +30,11 @@ table {
   background-color: #fff;
 }
 
-th,
-td {
-  border-right: 1px solid whitesmoke;
-}
-
-th {
-  font-weight: bold;
+.search-advanced-form {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

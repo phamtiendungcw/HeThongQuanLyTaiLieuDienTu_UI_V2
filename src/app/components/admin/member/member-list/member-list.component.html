@@ -7,11 +7,48 @@
   <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
 </div>
 
+<div *ngIf="toggleSearch" class="search-advanced-form card p-3">
+  <form #searchForm="ngForm" (ngSubmit)="applyFilterAdvanced()" class="row g-3" id="searchForm">
+    <div class="col-md-4">
+      <label class="form-label" for="inputEmail">Email</label>
+      <input [(ngModel)]="email" class="form-control" id="inputEmail" name="email" placeholder="Ví dụ: user_chucvu@gmail.com" type="email">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label" for="inputPassword">Họ và tên</label>
+      <input [(ngModel)]="hoVaTen" class="form-control" id="inputPassword" name="hoVaTen" placeholder="Nhập họ và tên người dùng..." type="text">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label" for="inputState">Giới tính</label>
+      <select [(ngModel)]="gioiTinh" class="form-select" id="inputState" name="gioiTinh">
+        <option selected>Lựa chọn giới tính...</option>
+        <option value="true">Nam</option>
+        <option value="false">Nữ</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label" for="inputAddress">Địa chỉ</label>
+      <input [(ngModel)]="diaChi" class="form-control" id="inputAddress" name="diaChi" placeholder="Hà Nội, Ninh Bình, Hà Nam,..." type="text">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label" for="inputPhone">Điện thoại</label>
+      <input [(ngModel)]="phone" class="form-control" id="inputPhone" name="phone" type="text">
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <button (click)="searchFormReset(searchForm)" class="btn me-1">
+        <i class="bi bi-arrow-counterclockwise"></i>&nbsp;Đặt lại
+      </button>
+      <button class="btn btn-primary" form="searchForm" type="submit"><i class="bi bi-search"></i>&nbsp;Tìm kiếm
+      </button>
+    </div>
+  </form>
+</div>
+
 <div class="d-flex mb-2 justify-content-between align-items-center">
   <div class="search rounded-5 border px-4 align-items-center">
     <mat-icon class="text-secondary">search</mat-icon>
     <input (keyup)="applyFilter($event)" class="px-2 py-2 border-0 w-auto bg-transparent" matInput placeholder="Nhập nội dung cần tìm..." type="search">
   </div>
+  <button (click)="toggleSearchAdvanced()" mat-button><i class="bi bi-chevron-up"></i>&nbsp;Tìm kiếm nâng cao</button>
   <div class="btn-function">
     <button (click)="exportToExcel()" class="btn btn-outline-secondary me-2">
       <i class="bi bi-download"></i>&nbsp;Xuất dữ liệu sang Excel
@@ -54,12 +91,12 @@
 
       <ng-container matColumnDef="ngayThangNamSinh">
         <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Ngày sinh</th>
-        <td mat-cell *matCellDef="let element"> {{element.ngayThangNamSinh | date:'dd/MM/yyyy'}} </td>
+        <td *matCellDef="let element" class="text-center" mat-cell> {{element.ngayThangNamSinh | date:'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="gioiTinh">
         <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header>Giới tính</th>
-        <td mat-cell *matCellDef="let element">
+        <td *matCellDef="let element" class="text-center" mat-cell>
           <span *ngIf="element.gioiTinh">Nam</span>
           <span *ngIf="!element.gioiTinh">Nữ</span>
         </td>

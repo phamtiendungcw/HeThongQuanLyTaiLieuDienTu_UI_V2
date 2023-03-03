@@ -7,11 +7,32 @@
   <app-breadcrumb [crumbs]="crumbs"></app-breadcrumb>
 </div>
 
+<div *ngIf="toggleSearch" class="search-advanced-form card p-3">
+  <form #searchForm="ngForm" (ngSubmit)="applyFilterAdvanced()" class="row g-3" id="searchForm">
+    <div class="col-md-6">
+      <label class="form-label" for="inputTitle">Tên tài liệu</label>
+      <input [(ngModel)]="title" class="form-control" id="inputTitle" name="title" placeholder="Nhập tên tài liệu cần tìm" type="text">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label" for="inputPassword">Mô tả</label>
+      <input [(ngModel)]="description" class="form-control" id="inputPassword" name="hoVaTen" placeholder="Nhập nội dung mô tả tài liệu cần tìm" type="text">
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <button (click)="searchFormReset(searchForm)" class="btn me-1">
+        <i class="bi bi-arrow-counterclockwise"></i>&nbsp;Đặt lại
+      </button>
+      <button class="btn btn-primary" form="searchForm" type="submit"><i class="bi bi-search"></i>&nbsp;Tìm kiếm
+      </button>
+    </div>
+  </form>
+</div>
+
 <div class="d-flex mb-2 justify-content-between align-items-center">
   <div class="search rounded-5 border px-4 align-items-center">
     <mat-icon class="text-secondary">search</mat-icon>
     <input (keyup)="applyFilter($event)" class="px-2 py-2 border-0 w-auto bg-transparent" matInput placeholder="Nhập nội dung cần tìm..." type="search">
   </div>
+  <button (click)="toggleSearchAdvanced()" mat-button><i class="bi bi-chevron-up"></i>&nbsp;Tìm kiếm nâng cao</button>
   <button (click)="openCreateDialog()" *appHasRole="['Admin','Moderator','Member']" color="primary" mat-raised-button>
     <i class="bi bi-plus"></i>&nbsp;Thêm mới tài liệu
   </button>
@@ -30,27 +51,27 @@
       </ng-container>
 
       <ng-container matColumnDef="description">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Mô tả tài liệu </th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Mô tả tài liệu</th>
         <td *matCellDef="let element" mat-cell> {{element.description}} </td>
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên file </th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Tên file</th>
         <td *matCellDef="let element" mat-cell> {{element.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="contentType">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Loại tệp </th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Loại tệp</th>
         <td *matCellDef="let element" mat-cell> {{element.contentType}} </td>
       </ng-container>
 
       <ng-container matColumnDef="createdAt">
-        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Ngày tạo </th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell mat-sort-header> Ngày tạo</th>
         <td *matCellDef="let element" mat-cell> {{element.createdAt | date:'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="hanhDong">
-        <th *matHeaderCellDef class="text-center" mat-header-cell> Hành động </th>
+        <th *matHeaderCellDef class="text-center" mat-header-cell> Hành động</th>
         <td *matCellDef="let element" class="btn-action text-center" mat-cell>
           <button (click)="downloadDocument(element.id, element.name)" class="btn btn-outline-success me-2">
             <i class="bi bi-download"></i>&nbsp;Tải về

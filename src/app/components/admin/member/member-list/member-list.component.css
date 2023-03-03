@@ -10,7 +10,16 @@ a {
   text-decoration: none;
 }
 
-table {
+.search-advanced-form {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-table {
   width: 100%;
 }
 
@@ -22,12 +31,41 @@ table {
   background-color: whitesmoke;
 }
 
-.member-list {
-  background: #ffffff;
+th,
+td {
+  border-right: 1px solid whitesmoke;
 }
 
-.member-list mat-form-field {
+th {
+  font-weight: bold;
+}
+
+.member-list {
   width: 100%;
+  background: #fff;
+}
+
+.search {
+  max-width: 300px;
+  display: flex;
+  flex: auto;
+  background-color: #fff;
+}
+
+.btn-action {
+  position: sticky;
+  padding: 5px;
+  display: flex;
+  flex: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  justify-content: center;
 }
 
 .modal-backdrop {
@@ -42,28 +80,6 @@ table {
 
 .modal-dialog {
   margin-top: 15rem;
-}
-
-.search {
-  max-width: 300px;
-  display: flex;
-  flex: auto;
-  background-color: #fff;
-}
-
-.btn-action {
-  padding: 5px;
-  display: flex;
-  flex: auto;
-  align-items: center;
-  justify-content: center;
-}
-
-.avatar {
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
-  justify-content: center;
 }
 
 /*# sourceMappingURL=member-list.component.css.map */

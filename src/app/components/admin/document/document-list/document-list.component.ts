@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DocumentDeleteComponent } from '../../../../layouts/theme/document-delete/document-delete.component';
 import { DocumentService } from '../../../../service/document.service';
 import { DocumentCreateComponent } from '../document-create/document-create.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-document-list',
@@ -37,10 +38,13 @@ export class DocumentListComponent implements OnInit {
     'createdAt',
     'hanhDong',
   ];
+  title!: string;
+  description!: string;
   dataSource!: MatTableDataSource<any>;
   @Inject(MAT_DIALOG_DATA) public editData: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  toggleSearch = false;
 
   constructor(
     private documentService: DocumentService,
@@ -119,5 +123,32 @@ export class DocumentListComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  toggleSearchAdvanced() {
+    this.toggleSearch = !this.toggleSearch;
+  }
+
+  searchFormReset(searchForm: NgForm) {
+    searchForm.resetForm();
+    this.loadDocuments();
+  }
+
+  applyFilterAdvanced() {
+    let filterData = this.dataSource;
+    if (this.title) {
+      filterData.data = filterData.data.filter(
+        (item) => item.title && item.title.includes(this.title)
+      );
+    }
+    if (this.description) {
+      filterData.data = filterData.data.filter(
+        (item) =>
+          item.description && item.description.includes(this.description)
+      );
+    }
+    if (filterData.paginator) {
+      filterData.paginator.firstPage();
+    }
   }
 }
