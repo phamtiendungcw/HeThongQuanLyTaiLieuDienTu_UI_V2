@@ -11,10 +11,13 @@
     <mat-form-field class="mb-3">
       <input [(ngModel)]="description" matInput name="description" placeholder="Nhập nôi dung mô tả tài liệu" required>
     </mat-form-field>
-    <input (change)="onFileChange($event)" name="file" type="file">
+    <div class="mb-3">
+      <label class="form-label" for="formFile">Lựa chọn tệp tài liệu</label>
+      <input (change)="onFileChange($event)" class="form-control" id="formFile" name="file" type="file">
+    </div>
   </form>
 </div>
 <div class="d-flex justify-content-end" mat-dialog-actions>
-  <button (click)="createDocument()" class="btn btn-primary" mat-button>Tạo</button>
   <button (click)="closeDialog()" mat-button>Huỷ</button>
+  <button [disabled]="documentForm.invalid" (click)="createDocument()" class="btn btn-primary" mat-button>Tạo</button>
 </div>

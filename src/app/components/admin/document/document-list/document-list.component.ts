@@ -2,18 +2,19 @@
  * Copyright (c) 2023. Phạm Tiến Dũng (DungCW)
  */
 
+import { Location } from '@angular/common';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { DocumentService } from '../../../../service/document.service';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
-import * as saveAs from 'file-saver';
-import { DocumentCreateComponent } from '../document-create/document-create.component';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { DomSanitizer } from '@angular/platform-browser';
+import * as saveAs from 'file-saver';
+import { ToastrService } from 'ngx-toastr';
 import { DocumentDeleteComponent } from '../../../../layouts/theme/document-delete/document-delete.component';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { DocumentService } from '../../../../service/document.service';
+import { DocumentCreateComponent } from '../document-create/document-create.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-document-list',
@@ -37,17 +38,20 @@ export class DocumentListComponent implements OnInit {
     'createdAt',
     'hanhDong',
   ];
+  title!: string;
+  description!: string;
   dataSource!: MatTableDataSource<any>;
   @Inject(MAT_DIALOG_DATA) public editData: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  toggleSearch = false;
 
   constructor(
     private documentService: DocumentService,
     private dialog: MatDialog,
     private sanitizer: DomSanitizer,
-    private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +75,7 @@ export class DocumentListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.loadDocuments();
+        this.toastr.success('Thêm tài liệu thành công');
       }
     });
   }
@@ -96,14 +101,15 @@ export class DocumentListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
         this.deleteDocument(id);
+        this.toastr.success('Xoá tài liệu thành công');
       }
     });
   }
 
   deleteDocument(id: number): void {
     this.documentService
-        .deleteDocument(id)
-        .subscribe(() => this.loadDocuments());
+      .deleteDocument(id)
+      .subscribe(() => this.loadDocuments());
   }
 
   applyFilter(event: Event) {
@@ -117,5 +123,32 @@ export class DocumentListComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  toggleSearchAdvanced() {
+    this.toggleSearch = !this.toggleSearch;
+  }
+
+  searchFormReset(searchForm: NgForm) {
+    searchForm.resetForm();
+    this.loadDocuments();
+  }
+
+  applyFilterAdvanced() {
+    let filterData = this.dataSource;
+    if (this.title) {
+      filterData.data = filterData.data.filter(
+        (item) => item.title && item.title.includes(this.title)
+      );
+    }
+    if (this.description) {
+      filterData.data = filterData.data.filter(
+        (item) =>
+          item.description && item.description.includes(this.description)
+      );
+    }
+    if (filterData.paginator) {
+      filterData.paginator.firstPage();
+    }
   }
 }

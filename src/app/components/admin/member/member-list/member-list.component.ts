@@ -3,16 +3,16 @@
  */
 
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MemberService } from '../../../../service/member.service';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MemberDetailComponent } from '../member-detail/member-detail.component';
-import { MemberEditComponent } from '../member-edit/member-edit.component';
-import { MemberCreateComponent } from '../member-create/member-create.component';
+import { MatTableDataSource } from '@angular/material/table';
 import { DeleteFormComponent } from '../../../../layouts/theme/delete-form/delete-form.component';
 import { ExportService } from '../../../../service/export.service';
+import { MemberService } from '../../../../service/member.service';
+import { MemberCreateComponent } from '../member-create/member-create.component';
+import { MemberDetailComponent } from '../member-detail/member-detail.component';
+import { MemberEditComponent } from '../member-edit/member-edit.component';
 
 @Component({
   selector: 'app-member-list',
@@ -38,7 +38,20 @@ export class MemberListComponent implements OnInit {
     'soCMND',
     'hanhDong',
   ];
+  searchValues = {
+    email: '',
+    hoVaTen: '',
+    gioiTinh: '',
+    diaChi: '',
+    phone: '',
+  };
+  email!: string;
+  hoVaTen!: string;
+  gioiTinh!: string;
+  diaChi!: string;
+  phone!: string;
   dataSource!: MatTableDataSource<any>;
+  toggleSearch = false;
   @Inject(MAT_DIALOG_DATA) public editData: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -80,10 +93,60 @@ export class MemberListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  applyFilterAdvanced() {
+    let filterData = this.dataSource;
+    if (this.hoVaTen) {
+      filterData.data = filterData.data.filter(
+        (item) => item.hoVaTen && item.hoVaTen.includes(this.hoVaTen)
+      );
+    }
+    if (this.diaChi) {
+      filterData.data = filterData.data.filter(
+        (item) => item.diaChi && item.diaChi.includes(this.diaChi)
+      );
+    }
+    if (this.email) {
+      filterData.data = filterData.data.filter(
+        (item) => item.email && item.email.includes(this.email)
+      );
+    }
+    if (this.phone) {
+      filterData.data = filterData.data.filter(
+        (item) => item.phone && item.phone.includes(this.phone)
+      );
+    }
+    // if (this.hoVaTen) {
+    //   this.dataSource.filter = this.hoVaTen.trim().toLowerCase();
+    // }
+    // if (this.email) {
+    //   this.dataSource.filter = this.email.trim().toLowerCase();
+    // }
+    // if (this.phone) {
+    //   this.dataSource.filter = this.phone.trim().toLowerCase();
+    // }
+    // if (this.diaChi) {
+    //   this.dataSource.filter = this.diaChi.trim().toLowerCase();
+    // }
+    // if (this.gioiTinh) {
+    //   this.dataSource.filter = this.gioiTinh.trim().toLowerCase();
+    // }
+    if (filterData.paginator) {
+      filterData.paginator.firstPage();
+    }
+  }
+
+  searchFormReset(searchFormValue: any) {
+    searchFormValue.reset();
+    this.getMembers();
+  }
+
+  toggleSearchAdvanced() {
+    this.toggleSearch = !this.toggleSearch;
   }
 
   openDetailForm(element: any) {
@@ -105,7 +168,6 @@ export class MemberListComponent implements OnInit {
           this.getMembers();
         }
       });
-    console.log(element);
   }
 
   openAddForm() {

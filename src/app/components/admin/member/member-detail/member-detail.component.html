@@ -26,7 +26,7 @@
 
     <mat-form-field appearance="standard">
       <mat-label>Ngày tháng năm sinh</mat-label>
-      <input matInput [(ngModel)]="member.ngayThangNamSinh" readonly>
+      <input matInput [(ngModel)]="ngaySinh" readonly>
     </mat-form-field>
 
     <mat-form-field appearance="standard">
@@ -41,7 +41,7 @@
 
     <mat-form-field appearance="standard">
       <mat-label>Ngày cấp chứng minh nhân dân</mat-label>
-      <input matInput [(ngModel)]="member.ngayCapCMND" readonly>
+      <input matInput [(ngModel)]="ngayCapCMND" readonly>
     </mat-form-field>
 
     <mat-form-field appearance="standard">
@@ -52,6 +52,16 @@
     <mat-form-field appearance="standard">
       <mat-label>Địa chỉ</mat-label>
       <input matInput [(ngModel)]="member.diaChi" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Ngày khởi tạo tài khoản</mat-label>
+      <input matInput [(ngModel)]="ngayKhoiTao" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Ngày truy cập gần nhất</mat-label>
+      <input matInput [(ngModel)]="ngayTruyCap" readonly>
     </mat-form-field>
   </div>
   <div mat-dialog-actions class="d-flex justify-content-end">

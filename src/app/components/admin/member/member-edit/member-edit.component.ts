@@ -5,9 +5,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MemberService } from '../../../../service/member.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Member } from '../../../../models/member';
+import { MemberService } from '../../../../service/member.service';
 
 @Component({
   selector: 'app-member-edit',
@@ -21,15 +21,13 @@ export class MemberEditComponent implements OnInit {
     private memberService: MemberService,
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private router: Router,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
+    @Inject(MAT_DIALOG_DATA) public editData: Member,
     private dialogRef: MatDialogRef<MemberEditComponent>
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
     this.getDataEdit();
-    console.log(this.editForm.value);
   }
 
   getDataEdit() {
@@ -89,7 +87,7 @@ export class MemberEditComponent implements OnInit {
           this.editForm.controls['gioiTinh'].setValue('false');
         }
         this.editForm.reset();
-        this.dialogRef.close('update');
+        this.dialogRef.close(true);
       },
       error: () =>
         this.toastr.error('Cập nhật không thành công!', 'Đã xảy ra sự cố'),

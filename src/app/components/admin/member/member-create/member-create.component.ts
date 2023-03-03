@@ -4,11 +4,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AccountService } from '../../../../service/account.service';
-import { Router } from '@angular/router';
-import { MemberService } from '../../../../service/member.service';
-import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { MemberService } from '../../../../service/member.service';
 
 @Component({
   selector: 'app-member-create',
@@ -22,9 +20,7 @@ export class MemberCreateComponent implements OnInit {
   minDate = new Date(1950, 1, 1);
 
   constructor(
-    private accountService: AccountService,
     private memberService: MemberService,
-    private router: Router,
     private toastr: ToastrService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<MemberCreateComponent>
@@ -61,25 +57,33 @@ export class MemberCreateComponent implements OnInit {
 
   addMember() {
     if (this.createForm.valid) {
-      if (this.createForm.controls['gioiTinh'].value === 'true') {
-        this.createForm.controls['gioiTinh'].setValue(true);
-      } else {
-        this.createForm.controls['gioiTinh'].setValue(false);
-      }
-      this.memberService.addMembers(this.createForm.value).subscribe({
-        next: () => {
-          this.toastr.success('Thêm mới nhân viên thành công');
-          if (this.createForm.controls['gioiTinh'].value === true) {
-            this.createForm.controls['gioiTinh'].setValue('true');
-          } else {
-            this.createForm.controls['gioiTinh'].setValue('false');
-          }
-          this.createForm.reset();
-          this.dialogRef.close(true);
-        },
-        error: (err) =>
-          this.toastr.error('Không thể thêm dữ liệu' + err, 'Đã có lỗi xảy ra'),
-      });
+      this.setGioiTinh();
+    }
+    this.memberService.addMembers(this.createForm.value).subscribe({
+      next: () => {
+        this.toastr.success('Thêm mới nhân viên thành công');
+        this.revertGioiTinh();
+        this.createForm.reset();
+        this.dialogRef.close(true);
+      },
+      error: (err) =>
+        this.toastr.error('Không thể thêm dữ liệu' + err, 'Đã có lỗi xảy ra'),
+    });
+  }
+
+  setGioiTinh() {
+    if (this.createForm.controls['gioiTinh'].value === 'true') {
+      this.createForm.controls['gioiTinh'].setValue(true);
+    } else {
+      this.createForm.controls['gioiTinh'].setValue(false);
+    }
+  }
+
+  revertGioiTinh() {
+    if (this.createForm.controls['gioiTinh'].value === true) {
+      this.createForm.controls['gioiTinh'].setValue('true');
+    } else {
+      this.createForm.controls['gioiTinh'].setValue('false');
     }
   }
 }

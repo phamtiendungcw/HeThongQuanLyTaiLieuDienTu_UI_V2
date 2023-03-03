@@ -71,5 +71,5 @@
 </div>
 <mat-dialog-actions class="d-flex justify-content-end">
   <button [mat-dialog-close]="false" [routerLink]="['/edmslab/home/members']" color="warn" mat-button>Hủy bỏ</button>
-  <button class="btn btn-primary" [disabled]="!editForm.dirty" mat-raised-button mat-button [mat-dialog-close]="true" (click)="updateMember()">Cập nhật</button>
+  <button class="btn btn-primary" [disabled]="!editForm.dirty||!editForm.valid" mat-raised-button mat-button [mat-dialog-close]="true" (click)="updateMember()">Cập nhật</button>
 </mat-dialog-actions>

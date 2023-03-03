@@ -30,5 +30,5 @@
 </form>
 <mat-dialog-actions class="d-flex justify-content-end">
   <button [mat-dialog-close]="false" [routerLink]="['/edmslab/home/members']" mat-button>Hủy bỏ</button>
-  <button class="btn btn-primary" mat-raised-button mat-button [mat-dialog-close]="true" (click)="addMember()">Lưu</button>
+  <button class="btn btn-primary" [disabled]="!createForm.valid" mat-raised-button mat-button [mat-dialog-close]="true" (click)="addMember()">Lưu</button>
 </mat-dialog-actions>
